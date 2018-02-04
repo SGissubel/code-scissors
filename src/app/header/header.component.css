@@ -1,0 +1,24 @@
+.navCont {
+  background: #3c3c3c;
+  margin-bottom: 2em;
+}
+
+.navbar-nav {
+  flex-direction: inherit;
+}
+
+.navbar-nav li a {
+  margin-right: 1em;
+}
+
+.dropdown-menu {
+  position: absolute !important;
+}
+
+.dropdown-menu li {
+  padding: 0 1em;
+}
+
+.open ul {
+  display: block !important;
+}

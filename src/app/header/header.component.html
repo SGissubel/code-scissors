@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default navCont">
+    <div class="container container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand"> SnipSnap</a>
+        </div>
+
+        <div class="navbar">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#" (click)="changeView('recipe')">LOGIN</a></li>
+                <li><a href="#" (click)="changeView('shopping-list')">SIGN UP</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" appDropdown>
+                    <!-- <div class="dropdown"> -->
+                        <a
+                            class="dropdown-toggle"
+                            role="button" 
+                            href="#">MANAGE SNIPPETS 
+                            <span class="caret"></span>
+                        </a>
+                        <ul [ngStyle]="{display : isOpen ? 'block' : 'none'}" class="dropdown-menu" role="menu">
+                            <li><a href="#">VIEW ALL SNIPPETS</a></li>
+                            <li><a href="#">ADD A NEW SNIPPET</a></li>
+                            <li><a href="#">VIEW SAVED SNIPPET</a></li>
+                            <li><a href="#">FIND A SNIPPET</a></li>
+                        </ul>
+                    <!-- </div> -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
