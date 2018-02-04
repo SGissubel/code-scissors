@@ -13,6 +13,7 @@
 
 .dropdown-menu {
   position: absolute !important;
+  white-space: nowrap;
 }
 
 .dropdown-menu li {
