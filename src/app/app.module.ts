@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 // directives 
 import { DropdownDirective } from './shared/dropdown.directive';
 import { FooterComponent } from './footer/footer.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     HeaderComponent,
     DropdownDirective,
-    FooterComponent
+    FooterComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
