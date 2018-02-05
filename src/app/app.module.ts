@@ -8,15 +8,15 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 // components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './nav/header/header.component';
+import { FooterComponent } from './nav/footer/footer.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { BodyComponent } from './home-page/body/body.component';
+import { LoginComponent } from './login/login/login.component';
+import { SignupComponent } from './login/signup/signup.component';
 
 // directives 
 import { DropdownDirective } from './shared/dropdown.directive';
-import { FooterComponent } from './footer/footer.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { BodyComponent } from './home-page/body/body.component';
-import { SignupComponent } from './signup/signup.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
