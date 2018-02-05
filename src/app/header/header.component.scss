@@ -1,6 +1,13 @@
 .navCont {
-  background: #3c3c3c;
-  margin-bottom: 2em;
+  background: #3c3c3c;  
+}
+
+.navbar .dropdown-menu a:hover {
+  color: blue !important;
+}
+
+.navbar .dropdown-menu li {
+  padding: 3px 1em !important;
 }
 
 .navbar {

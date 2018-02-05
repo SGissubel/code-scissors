@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { Routes, RouterModule } from '@angular/router';
+
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 // components
@@ -11,7 +15,14 @@ import { HeaderComponent } from './header/header.component';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { BodyComponent } from './home-page/body/body.component';
+import { SignupComponent } from './signup/signup.component';
 
+const appRoutes: Routes = [
+  { path: '', component: HomePageComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent }
+];
 
 @NgModule({
   declarations: [
@@ -20,10 +31,15 @@ import { HomePageComponent } from './home-page/home-page.component';
     HeaderComponent,
     DropdownDirective,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    BodyComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes),
     MDBBootstrapModule.forRoot()
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
