@@ -17,11 +17,13 @@ import { SignupComponent } from './login/signup/signup.component';
 
 // directives 
 import { DropdownDirective } from './shared/dropdown.directive';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent }
+  { path: 'signup', component: SignupComponent },
+  { path: 'dashboard', component: DashboardComponent },
 ];
 
 @NgModule({
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     FooterComponent,
     HomePageComponent,
     BodyComponent,
-    SignupComponent
+    SignupComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
