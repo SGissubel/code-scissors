@@ -13,7 +13,8 @@ import { FooterComponent } from './nav/footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BodyComponent } from './home-page/body/body.component';
 import { LoginComponent } from './login/login/login.component';
-import { SignupComponent } from './login/signup/signup.component';
+import { SignupComponent } from './login/signup/signup.component';\
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // directives 
 import { DropdownDirective } from './shared/dropdown.directive';
@@ -24,6 +25,8 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({
@@ -36,7 +39,8 @@ const appRoutes: Routes = [
     HomePageComponent,
     BodyComponent,
     SignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
