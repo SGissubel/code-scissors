@@ -11,6 +11,7 @@ import { HeaderComponent } from './nav/header/header.component';
 import { FooterComponent } from './nav/footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { BodyComponent } from './home-page/body/body.component';
+import { LoginSignupComponent } from './login/login-signup.component';
 import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -29,6 +30,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     FooterComponent,
     HomePageComponent,
     BodyComponent,
+    LoginSignupComponent,
     SignupComponent,
     DashboardComponent,
     PageNotFoundComponent

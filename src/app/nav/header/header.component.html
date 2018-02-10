@@ -7,10 +7,11 @@
         <div class="navbar">
             <ul class="nav navbar-nav navbar-left">
                 <li><a routerLink="/login">LOGIN</a></li>
-                <li><a href="#" routerLink="/signup">SIGN UP</a></li>
+                <li><a href="#" routerLink="../login/signup">SIGN UP</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" appDropdown>
+                    <!-- add protection -> return to login if not logged in -->
                     <a
                         class="dropdown-toggle"
                         role="button" 

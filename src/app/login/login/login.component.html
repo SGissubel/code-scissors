@@ -5,16 +5,22 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <form>
+    <!-- send to login external component -->
+    <form (ngSubmit)="onLoginSubmit()" #login="ngForm">
       <div class="col-sm-5 form-group">
         <label for="username">User Name</label>
         <input 
           type="text" 
-          id="usernameInputID" 
+          id="username" 
           class="form-control"
           name="username"
-          #usernameInput>
+          ngModel
+          #username="ngModel"
+          username
+          required>
+          <span *ngIf="!username.valid && username.touched" class="help-block">You Must Enter Your Username</span>
       </div>
+      
       <div class="col-sm-5 form-group">
         <label for="password">Password</label>
         <input 
@@ -22,7 +28,11 @@
           id="passwordInputID" 
           class="form-control"
           name="password"
+          password
+          ngModel
+          #password="ngModel"
           #passwordInput>
+          <span *ngIf="!password.valid && password.touched" class="help-block">You Must Enter Your Password</span>
       </div>
       <div class="row">
         <div class="col-xs-12">
@@ -30,5 +40,6 @@
         </div>
       </div>
     </form>
+    <span><a href="#" routerLink="../login/signup">Don't have a login? Sign Up Here!</a></span>
   </div>
 </div>

@@ -6,3 +6,10 @@ footer.page-footer {
   padding-top: 3em;
   margin-top: 0;
 }
+
+@media (max-width: 992px) and (min-width: 768px) {
+  .footer-aboutDiv ul {
+    text-align: left;
+    margin-left: 6em;
+  }
+}
