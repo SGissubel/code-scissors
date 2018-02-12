@@ -24,19 +24,26 @@
       <div class="col-sm-5 form-group">
         <label for="password">Password</label>
         <input 
-          type="text" 
+          type="password" 
           id="passwordInputID" 
           class="form-control"
           name="password"
           password
           ngModel
+          pattern=".{6,}"
           #password="ngModel"
           #passwordInput>
-          <span *ngIf="!password.valid && password.touched" class="help-block">You Must Enter Your Password</span>
+          <span *ngIf="!password.valid && password.touched" class="help-block">
+            You Must Enter Your Password. Password must be at least 6 characters long.
+          </span>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="submit" (click)="onLogin()">LOG IN</button>
+          <button
+            [disabled]="!login.valid"
+            class="btn btn-success"
+            type="submit"
+            (click)="onLogin()">LOG IN</button>
         </div>
       </div>
     </form>

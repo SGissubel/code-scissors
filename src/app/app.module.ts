@@ -18,8 +18,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 
-// directives 
+// directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
+import { AuthService } from './login/auth.service';
+import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { DropdownDirective } from './shared/dropdown.directive';
     LoginSignupComponent,
     SignupComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DashboardHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
     MDBBootstrapModule.forRoot(),
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
