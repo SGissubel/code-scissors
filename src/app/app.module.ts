@@ -16,12 +16,13 @@ import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
-import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
+import { UserDataService } from './dashboard/userData.sevice';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-hom
     MDBBootstrapModule.forRoot(),
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [AuthService],
+  providers: [UserDataService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
