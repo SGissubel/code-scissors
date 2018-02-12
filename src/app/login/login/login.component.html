@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-md-12">
     <!-- send to login external component -->
-    <form (ngSubmit)="onLoginSubmit()" #login="ngForm">
+    <form (ngSubmit)="onLoginSubmit(login)" #login="ngForm">
       <div class="col-sm-5 form-group">
         <label for="username">User Name</label>
         <input 

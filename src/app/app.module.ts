@@ -15,17 +15,14 @@ import { LoginSignupComponent } from './login/login-signup.component';
 import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
 import { UserDataService } from './dashboard/userData.sevice';
-import { DashboardUserDetailComponent } from './dashboard/dashboard-user-detail/dashboard-user-detail.component';
-import { SnippetsListComponent } from './dashboard/user-snippets/snippets-list/snippets-list.component';
-import { SnippetEditComponent } from './dashboard/user-snippets/snippet-edit/snippet-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -38,18 +35,15 @@ import { SnippetEditComponent } from './dashboard/user-snippets/snippet-edit/sni
     BodyComponent,
     LoginSignupComponent,
     SignupComponent,
-    DashboardComponent,
     PageNotFoundComponent,
-    DashboardHomeComponent,
-    DashboardUserDetailComponent,
-    SnippetsListComponent,
-    SnippetEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    DashboardModule,
+    
     MDBBootstrapModule.forRoot(),
     ],
   schemas: [ NO_ERRORS_SCHEMA ],

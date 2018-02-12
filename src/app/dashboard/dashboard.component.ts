@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private userService: UserDataService) { }
 
   ngOnInit() {
-    this.userService.setUserId(user);
+    this.userService.setUserId(this.user);
     // sending id to service here for now - until set up db
   }
 

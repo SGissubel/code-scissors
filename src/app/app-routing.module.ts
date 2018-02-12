@@ -7,17 +7,13 @@ import { LoginSignupComponent } from './login/login-signup.component';
 import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-home.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginSignupComponent, children: [
     { path: '', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-  ]},
-  { path: 'dashboard', component: DashboardComponent, children: [
-    { path: '', component: DashboardHomeComponent}
   ]},
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'not-found' }
