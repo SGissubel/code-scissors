@@ -23,6 +23,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
 import { UserDataService } from './dashboard/userData.sevice';
+import { DashboardUserDetailComponent } from './dashboard/dashboard-user-detail/dashboard-user-detail.component';
+import { SnippetsListComponent } from './dashboard/user-snippets/snippets-list/snippets-list.component';
+import { SnippetEditComponent } from './dashboard/user-snippets/snippet-edit/snippet-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { UserDataService } from './dashboard/userData.sevice';
     SignupComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    DashboardHomeComponent
+    DashboardHomeComponent,
+    DashboardUserDetailComponent,
+    SnippetsListComponent,
+    SnippetEditComponent
   ],
   imports: [
     BrowserModule,
