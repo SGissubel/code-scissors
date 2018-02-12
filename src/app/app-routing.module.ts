@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // components
+import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginSignupComponent } from './login/login-signup.component';
 import { LoginComponent } from './login/login/login.component';
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    DashboardRoutingModule
   ],
   exports: [RouterModule]
 })
