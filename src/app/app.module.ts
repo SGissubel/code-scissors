@@ -22,7 +22,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
 import { UserDataService } from './dashboard/userData.sevice';
-
+import { MaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -43,8 +44,9 @@ import { UserDataService } from './dashboard/userData.sevice';
     HttpModule,
     AppRoutingModule,
     DashboardModule,
-    
+    MaterialModule,
     MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [UserDataService, AuthService],
