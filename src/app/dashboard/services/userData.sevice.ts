@@ -10,7 +10,7 @@ export class UserDataService {
   }
 
   getuserData() {
-    return Object.assign({}, this.user);
+    return this.user;
   }
 
 }

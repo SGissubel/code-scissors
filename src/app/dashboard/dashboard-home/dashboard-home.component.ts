@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserDataService } from '../userData.sevice';
+import { UserDataService } from '../services/userData.sevice';
 
 @Component({
   selector: 'app-dashboard-home',

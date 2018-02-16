@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,13 +15,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   constructor(private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  onSignup() {
-    this.router.navigate(['/login'], {relativeTo: this.route})
+  onSignup(signUpForm: NgForm) {
+    this.authService.registerUser(signUpForm.value);
   }
 
 }

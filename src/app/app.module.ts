@@ -3,7 +3,11 @@ import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
 
 // components
 import { AppComponent } from './app.component';
@@ -21,9 +25,10 @@ import { DashboardModule } from './dashboard/dashboard.module';
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
-import { UserDataService } from './dashboard/userData.sevice';
+import { UserDataService } from './dashboard/services/userData.sevice';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -40,13 +45,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase, 'code-scissors'),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
     DashboardModule,
     MaterialModule,
     MDBBootstrapModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FlexLayoutModule
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [UserDataService, AuthService],
