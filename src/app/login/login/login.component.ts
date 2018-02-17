@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: [
-    './login.component.scss', 
+    './login.component.scss',
     '../login-signup.component.scss'
   ]
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  onLogin(login: NgForm) {
-     this.router.navigate(['dashboard'])
+  onLoginSubmit(form: NgForm) {
+    this.authService.userSignin(form.value);
   }
 
 }

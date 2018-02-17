@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navCont">
-    <div class="container container-fluid">
+    <div class="container-fluid">
         <div class="navbar-header">
             <a routerLink="/" class="navbar-brand"><i>Code Scissors</i></a>
         </div>
@@ -20,10 +20,10 @@
                         <span class="caret"></span>
                     </a>
                     <ul [ngStyle]="{display : isOpen ? 'block' : 'none'}" class="dropdown-menu" role="menu">
-                        <li><a >VIEW ALL SNIPPETS</a></li>
-                        <li><a href="#">ADD A NEW SNIPPET</a></li>
-                        <li><a href="#">VIEW SAVED SNIPPET</a></li>
-                        <li><a href="#">FIND A SNIPPET</a></li>
+                        <li><a routerLink="dashboard">VIEW ALL SNIPPETS</a></li>
+                        <li><a routerLink="dashboard/new">ADD A NEW SNIPPET</a></li>
+                        <li><a routerLink="dashboard">VIEW SAVED SNIPPET</a></li>
+                        <li><a >FIND A SNIPPET</a></li>
                     </ul>
                 </li>
             </ul>

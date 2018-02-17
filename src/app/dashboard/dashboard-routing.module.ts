@@ -3,14 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
+import { DashboardUserDetailComponent } from './dashboard-user-detail/dashboard-user-detail.component';
+import { UserSnippetComponent } from './user-snippets/user-snippet.component';
+import { SnippetEditComponent } from './user-snippets/snippet-edit/snippet-edit.component';
 import { AuthGuard } from '../login/auth.guard';
 
 const dashboardRoutes: Routes = [
   {
-    path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
-    { path: '', component: DashboardHomeComponent}
+    // path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
+    path: 'dashboard', component: DashboardComponent, children: [
+    { path: '', component: DashboardHomeComponent },
+    { path: ':id/user/detail', component: DashboardUserDetailComponent },
+    { path: ':id/edit', component: UserSnippetComponent },
+    { path: 'new', component: UserSnippetComponent }
   ]},
-]
+];
 
 @NgModule({
   imports: [
@@ -19,6 +26,4 @@ const dashboardRoutes: Routes = [
   exports: [RouterModule],
   providers: [AuthGuard]
 })
-export class DashboardRoutingModule {
-
-}
+export class DashboardRoutingModule { }

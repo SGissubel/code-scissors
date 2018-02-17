@@ -11,17 +11,7 @@
       fxLayoutGap="2em"
        #signupForm="ngForm"
       (ngSubmit)="onSignup(signupForm)">
-      <mat-form-field>
-        <input
-          matInput
-          type="text"
-          placeholder="User Name"
-          ngModel
-          name="username"
-          username
-          required
-          #username="ngModel">
-      </mat-form-field>
+      
       <mat-form-field>
         <input
           matInput
@@ -32,8 +22,8 @@
           email
           required
           #email="ngModel">
-
       </mat-form-field>
+      <mat-error *ngIf="displayError">{{ displayError }}</mat-error>
       <mat-form-field>
         <input 
           matInput
@@ -45,9 +35,10 @@
           minlength="6" 
           #password="ngModel">
         </mat-form-field>
+
         <div class="row">
           <div class="col-xs-12">
-            <button mat-raised-button type="submit">Sign Up</button>
+            <button type="submit" mat-raised-button [disabled]="signupForm.invalid">SIGN UP</button>
           </div>
         </div>
     </form>

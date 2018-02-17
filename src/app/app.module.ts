@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -45,6 +46,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   ],
   imports: [
     BrowserModule,
+    MonacoEditorModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'code-scissors'),
     AngularFirestoreModule,
     AngularFireStorageModule,

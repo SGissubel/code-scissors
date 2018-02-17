@@ -3,50 +3,46 @@
     <h3>Log In</h3>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-12">
-    <!-- send to login external component -->
-    <form (ngSubmit)="onLoginSubmit(login)" #login="ngForm">
-      <div class="col-sm-5 form-group">
-        <label for="username">User Name</label>
-        <input 
-          type="text" 
-          id="username" 
-          class="form-control"
-          name="username"
-          ngModel
-          #username="ngModel"
-          username
-          required>
-          <span *ngIf="!username.valid && username.touched" class="help-block">You Must Enter Your Username</span>
+
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="2em"
+    #login="ngForm"
+    (ngSubmit)="onLoginSubmit(login)">
+    <mat-form-field>
+      <input
+        matInput
+        type="email" 
+        placeholder="Email"
+        ngModel
+        name="email"
+        email
+        required
+        #email="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password" 
+        placeholder="Password"
+        ngModel
+        name="password"
+        password
+        required
+        pattern=".{6,}"
+        #password="ngModel">
+    </mat-form-field>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <button
+        type="submit"
+          mat-raised-button
+          [disabled]="login.invalid">LOG IN</button>
       </div>
-      
-      <div class="col-sm-5 form-group">
-        <label for="password">Password</label>
-        <input 
-          type="password" 
-          id="passwordInputID" 
-          class="form-control"
-          name="password"
-          password
-          ngModel
-          pattern=".{6,}"
-          #password="ngModel"
-          #passwordInput>
-          <span *ngIf="!password.valid && password.touched" class="help-block">
-            You Must Enter Your Password. Password must be at least 6 characters long.
-          </span>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <button
-            [disabled]="!login.valid"
-            class="btn btn-success"
-            type="submit"
-            (click)="onLogin()">LOG IN</button>
-        </div>
-      </div>
-    </form>
-    <span><a href="#" routerLink="../login/signup">Don't have a login? Sign Up Here!</a></span>
-  </div>
-</div>
+    </div>
+  </form>
+  <span><a href="#" routerLink="../login/signup">Don't have a login? Sign Up Here!</a></span>
+</section>

@@ -4,7 +4,7 @@
     <app-snippet-table *ngIf="snippets.length"></app-snippet-table>
     <div *ngIf="!snippets.length">
       <p>You currently have no snippets saved</p>
-      <a href="#">Create your first snippet!</a>
+      <a routerLink="new">Create your first snippet!</a>
     </div>    
   </div>
 </div>

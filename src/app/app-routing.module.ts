@@ -8,7 +8,6 @@ import { LoginSignupComponent } from './login/login-signup.component';
 import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthGuard } from './login/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -25,7 +24,7 @@ const appRoutes: Routes = [
     DashboardRoutingModule
   ],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: []
 })
 export class AppRoutingModule {
 

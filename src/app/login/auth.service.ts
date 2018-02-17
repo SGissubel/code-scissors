@@ -9,6 +9,7 @@ import { IAuthData } from '../dashboard/models/user.model';
 @Injectable()
 export class AuthService {
   isLoggedIn = new Subject<boolean>();
+  error = new Subject<any>();
   private user: IUser;
   private isAuthenticated: boolean;
 
@@ -20,26 +21,11 @@ export class AuthService {
       authData.email,
       authData.password
     ).then(result => {
-      console.log(result);
       this.authSuccessful();
     })
       .catch(error => {
-        console.log(error); //add an error show
+        this.error = error; // add an error show
       });
-    // { look for this !!! in error
-    //   "error": {
-    //     "errors": [
-    //       {
-    //         "domain": "global",
-    //         "reason": "invalid",
-    //         "message": "EMAIL_EXISTS"
-    //       }
-    //     ],
-    //       "code": 400,
-    //         "message": "EMAIL_EXISTS"
-    //   }
-    // }
-    
   }
 
   userSignin(authData: IAuthData) {
@@ -51,7 +37,7 @@ export class AuthService {
       this.authSuccessful();
     })
       .catch(error => {
-        console.log(error); //add an error show
+        console.log(error); // add an error show
       });
   }
 
@@ -71,4 +57,5 @@ export class AuthService {
     this.isLoggedIn.next(true);
     this.router.navigate(['/dashboard']);
   }
+
 }

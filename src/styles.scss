@@ -1,2 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~highlight.js/styles/vs.css';
+
+
+
+footer.page-footer {
+  padding-top: 3em;
+  margin-top: 0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#page-container {
+	min-height: 50vw;
+}
+
+ngx-monaco-editor {
+	height: 25vw !important;
+	margin: 0 auto;
+	width: 75% !important;
+}
+
+.monaco-editor {
+	width: 100%;
+}
+
+.overflow-guard,
+.mini-map.slider-mouseover,
+.minimap-slider {
+	height: 100% !important;
+	width: 100% !important;
+}
+

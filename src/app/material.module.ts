@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkTableModule } from '@angular/cdk/table';
 
-import { 
+import {
   MatIconModule,
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatTableModule 
+  MatTableModule,
+  MatSelectModule
 } from '@angular/material';
 
 @NgModule({
@@ -21,6 +22,7 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
+    MatSelectModule,
     CdkTableModule
   ],
   exports: [
@@ -31,6 +33,7 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
+    MatSelectModule,
     CdkTableModule
   ],
 })

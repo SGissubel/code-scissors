@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { UserDataService } from '../services/userData.sevice';
 
@@ -15,6 +16,7 @@ export class DashboardHomeComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.userService.getuserData();
+    // this.snippets = get all snippet data
     console.log(this.user);
   }
 

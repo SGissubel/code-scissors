@@ -1,3 +1,60 @@
-<p>
-  snippet-edit works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Create a new Snippet!</h3>
+  </div>
+</div>
+
+<section>
+  <form
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="5em"
+    #codeTags="ngForm"
+    (ngSubmit)="oncodeTagsSubmit(codeTags)">
+    <mat-form-field>
+    	<mat-select placeholder="Choose an Language" ngModel name="language" required>
+				<mat-option *ngFor="let language of languages" [value]="language.value" name="language.value">
+					{{ language.name }}
+				</mat-option>
+			</mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+      	name="tag"
+      	type="text"
+        matInput
+        placeholder="Add Addition Tags"
+        ngModel
+        tag
+        #tag="ngModel">
+    </mat-form-field>
+    <a (click)="addTag(tag)"><i class="material-icons">add_circle</i></a>
+    <mat-form-field>
+    	<input
+    		type="text" 
+        matInput
+        placeholder="Name For Snippet"
+        ngModel
+        name="snippetname"
+        snippetname
+        #snippetname="ngModel"
+        required>
+    </mat-form-field>
+    <div class="row">
+      <div class="col-xs-12">
+        <button type="button" mat-raised-button color="primary" [disabled]="codeTags.invalid" (click)="onSubmitCode()">SAVE SNIPPET</button>
+      </div>
+    </div>
+  </form>
+</section>
+
+<div>
+	<section *ngFor="let tag of otherTags">
+			{{ tag }}
+	</section>
+</div>
+
+<ngx-monaco-editor 
+	[options]="editorOptions" 
+	[(ngModel)]="code"></ngx-monaco-editor>
+	
