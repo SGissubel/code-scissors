@@ -1,32 +1,39 @@
 <nav class="navbar navbar-default navCont">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a routerLink="/" class="navbar-brand"><i>Code Scissors</i></a>
-        </div>
-
-        <div class="navbar">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a routerLink="/login">LOGIN</a></li>
-                <li><a routerLink="../login/signup">SIGN UP</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown" appDropdown>
-                    <!-- add protection -> return to login if not logged in -->
-                    <a
-                        style="cursor: pointer"
-                        class="dropdown-toggle"
-                        role="button">
-                        MANAGE SNIPPETS 
-                        <span class="caret"></span>
-                    </a>
-                    <ul [ngStyle]="{display : isOpen ? 'block' : 'none'}" class="dropdown-menu" role="menu">
-                        <li><a routerLink="dashboard">VIEW ALL SNIPPETS</a></li>
-                        <li><a routerLink="dashboard/new">ADD A NEW SNIPPET</a></li>
-                        <li><a routerLink="dashboard">VIEW SAVED SNIPPET</a></li>
-                        <li><a >FIND A SNIPPET</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a routerLink="/" class="navbar-brand"><i>Code Scissors</i></a>
     </div>
+
+    <div class="navbar">
+      <ng-container *ngIf="!isAuth">
+	      <ul class="nav navbar-nav navbar-left">
+	        <li><a routerLink="/login">LOGIN</a></li>
+	        <li><a routerLink="../login/signup">SIGN UP</a></li>
+	      </ul>
+      </ng-container>
+      <ng-container *ngIf="isAuth">
+        <ul class="nav navbar-nav navbar-left logout">
+        	<li><a routerLink="../dashboard/:id/user/detail">PROFILE SETTINGS</a></li>
+	        <li><a (click)="onLogOut()">LOG OUT</a></li>
+	      </ul>
+      </ng-container>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <a
+            style="cursor: pointer"
+            class="dropdown-toggle"
+            role="button">
+            MANAGE SNIPPETS 
+            <span class="caret"></span>
+          </a>
+          <ul [ngStyle]="{display : isOpen ? 'block' : 'none'}" class="dropdown-menu" role="menu">
+            <li><a routerLink="dashboard">VIEW ALL SNIPPETS</a></li>
+            <li><a routerLink="dashboard/new">ADD A NEW SNIPPET</a></li>
+            <!-- <li><a routerLink="dashboard">VIEW SAVED SNIPPET</a></li>  -->   <!--  for use with multiple users view/share  -->
+            <!-- <li><a>FIND A SNIPPET</a></li> -->  
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

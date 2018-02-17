@@ -1,9 +1,3 @@
-<div class="row">
-  <div class="col-md-12">
-    <h3>Log In</h3>
-  </div>
-</div>
-
 <section>
   <form
     fxLayout="column"
@@ -11,6 +5,11 @@
     fxLayoutGap="2em"
     #login="ngForm"
     (ngSubmit)="onLoginSubmit(login)">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Log In</h3>
+      </div>
+    </div>
     <mat-form-field>
       <input
         matInput
@@ -43,6 +42,7 @@
           [disabled]="login.invalid">LOG IN</button>
       </div>
     </div>
+    <span><a href="#" routerLink="../login/signup">Don't have a login? Sign Up Here!</a></span>
   </form>
-  <span><a href="#" routerLink="../login/signup">Don't have a login? Sign Up Here!</a></span>
+  
 </section>

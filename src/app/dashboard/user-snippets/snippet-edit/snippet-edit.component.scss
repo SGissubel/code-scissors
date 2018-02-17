@@ -2,17 +2,12 @@ form {
 	margin-bottom: 7em;
 }
 
-.mat-input-element {
-	border-bottom: none;
-}
-
-.mat-input-infix, 
-.mat-form-field-infix {
-  border-bottom: none;
-}
-
 .overflow-guard,
 .mini-map.slider-mouseover,
 .minimap-slider {
 	height: 100% !important;
+}
+
+#languageSelect {
+	padding-bottom: 1.15em;
 }

@@ -13,19 +13,12 @@ import { AuthService } from '../auth.service';
   ]
 })
 export class SignupComponent implements OnInit {
-  displayError: string;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.error
-      .subscribe(
-        error => {
-          this.displayError = error;  // not doing as intended?
-        }
-      );
   }
 
   onSignup(signUpForm: NgForm) {

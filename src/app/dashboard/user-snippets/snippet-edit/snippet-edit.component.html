@@ -11,8 +11,8 @@
     fxLayoutGap="5em"
     #codeTags="ngForm"
     (ngSubmit)="oncodeTagsSubmit(codeTags)">
-    <mat-form-field>
-    	<mat-select placeholder="Choose an Language" ngModel name="language" required>
+    <mat-form-field >
+    	<mat-select id="languageSelect" placeholder="Choose an Language" ngModel name="language" required>
 				<mat-option *ngFor="let language of languages" [value]="language.value" name="language.value">
 					{{ language.name }}
 				</mat-option>
@@ -27,8 +27,9 @@
         ngModel
         tag
         #tag="ngModel">
+        <a (click)="addTag(tag)" matSuffix><i class="material-icons">add_circle</i></a>
     </mat-form-field>
-    <a (click)="addTag(tag)"><i class="material-icons">add_circle</i></a>
+    <span></span>
     <mat-form-field>
     	<input
     		type="text" 

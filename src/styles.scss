@@ -34,3 +34,17 @@ ngx-monaco-editor {
 	width: 100% !important;
 }
 
+
+
+
+// inputs
+.mat-input-infix, 
+.mat-form-field-infix {
+  border-bottom: none;
+}
+
+.mat-input-element {
+	border-bottom: none !important;
+	box-shadow: none !important;
+}
+

@@ -22,14 +22,16 @@ import { SignupComponent } from './login/signup/signup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material.module';
 
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
 import { UserDataService } from './dashboard/services/userData.sevice';
-import { MaterialModule } from './material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { UIService } from './shared/ui.service';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +63,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [UserDataService, AuthService],
+  providers: [UserDataService, AuthService, UIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

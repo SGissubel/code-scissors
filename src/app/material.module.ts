@@ -10,7 +10,8 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatTableModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -23,6 +24,7 @@ import {
     MatNativeDateModule,
     MatTableModule,
     MatSelectModule,
+    MatSnackBarModule,
     CdkTableModule
   ],
   exports: [
@@ -34,6 +36,7 @@ import {
     MatNativeDateModule,
     MatTableModule,
     MatSelectModule,
+    MatSnackBarModule,
     CdkTableModule
   ],
 })
