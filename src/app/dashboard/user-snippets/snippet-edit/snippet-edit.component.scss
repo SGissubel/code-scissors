@@ -1,4 +1,4 @@
-form {
+#formSection {
 	margin-bottom: 7em;
 }
 
@@ -10,4 +10,31 @@ form {
 
 #languageSelect {
 	padding-bottom: 1.15em;
+}
+
+mat-checkbox {
+  position: relative;
+}
+
+mat-hint {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  font-size: 14px;
+  color: cornflowerblue;
+}
+
+.tagDiv {
+	margin-right: 10px;
+  width: 150px;
+  padding: 6px;
+  text-transform: uppercase;
+  border: 1px solid #68a7bb;
+  background: #68a7bb;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.tagDiv i {
+	float: right;
 }

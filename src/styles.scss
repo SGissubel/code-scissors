@@ -2,7 +2,13 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~highlight.js/styles/vs.css';
 
-
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; 
+}
 
 footer.page-footer {
   padding-top: 3em;
@@ -29,12 +35,12 @@ ngx-monaco-editor {
 
 .overflow-guard,
 .mini-map.slider-mouseover,
-.minimap-slider {
+.minimap-slider,
+.monaco-scrollable-element,
+.lines-content.monaco-editor-background {
 	height: 100% !important;
 	width: 100% !important;
 }
-
-
 
 
 // inputs

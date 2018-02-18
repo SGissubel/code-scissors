@@ -1,6 +1,8 @@
 export class LanguagesService {
   languages = [
     {name: 'JavaScript', value: 'javascript'},
+    {name: 'TypeScript', value: 'typescript'},
+    {name: 'HTML', value: 'html'},
     {name: 'Coffee', value: 'coffee'},
     {name: 'C#', value: 'csharp'},
     {name: 'CSS', value: 'css'},

@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<section>
+<section id="formSection">
   <form
     fxLayout="row"
     fxLayoutAlign="center center"
@@ -12,7 +12,13 @@
     #codeTags="ngForm"
     (ngSubmit)="oncodeTagsSubmit(codeTags)">
     <mat-form-field >
-    	<mat-select id="languageSelect" placeholder="Choose an Language" ngModel name="language" required>
+    	<mat-select 
+        id="languageSelect"
+        placeholder="Choose an Language"
+        ngModel
+        name="language"
+        (change)="handleSetLanguage($event)"
+        required>
 				<mat-option *ngFor="let language of languages" [value]="language.value" name="language.value">
 					{{ language.name }}
 				</mat-option>
@@ -41,21 +47,41 @@
         #snippetname="ngModel"
         required>
     </mat-form-field>
+      <mat-checkbox
+        matInput
+        ngModel
+        name="private"
+        private
+        (change)="onChangePrivacy()"
+        #private>Make Snippet Private?
+        <mat-hint *ngIf="privacySetting">Set to Private</mat-hint>
+        <mat-hint *ngIf="!privacySetting">Set to Public</mat-hint>
+        </mat-checkbox>
+
+
+
     <div class="row">
       <div class="col-xs-12">
-        <button type="button" mat-raised-button color="primary" [disabled]="codeTags.invalid" (click)="onSubmitCode()">SAVE SNIPPET</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="codeTags.invalid" >SAVE SNIPPET</button>
       </div>
     </div>
   </form>
+  <div>
+    <section 
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px">
+      <div class="tagDiv" *ngFor="let tag of otherTags; let i = index">
+        <span class="tagSpan">{{ tag }}</span><a (click)="onRemoveTag(i)"><i class="material-icons">delete_forever</i></a>
+      </div>
+    </section>
+  </div>
 </section>
 
-<div>
-	<section *ngFor="let tag of otherTags">
-			{{ tag }}
-	</section>
-</div>
 
-<ngx-monaco-editor 
+
+<ngx-monaco-editor
+  id="monaco-editor" 
 	[options]="editorOptions" 
 	[(ngModel)]="code"></ngx-monaco-editor>
 	

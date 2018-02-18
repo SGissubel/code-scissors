@@ -12,11 +12,18 @@ import { UserSnippetComponent } from './user-snippets/user-snippet.component';
 import { SnippetEditComponent } from './user-snippets/snippet-edit/snippet-edit.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SnippetTableComponent } from './user-snippets/snippet-table/snippet-table.component';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor';
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { SnippetsService } from './services/snippets.service';
 import { LanguagesService } from './user-snippets/snippet-edit/languages.service';
+
+const monacoConfig: NgxMonacoEditorConfig = {
+  baseUrl: 'app-name/assets',
+  defaultOptions: { scrollBeyondLastLine: false }, // pass deafult options to be used
+  onMonacoLoad: () => { console.log((<any>window).monaco); } // here monaco object will be avilable as window.monaco use this function to extend monaco editor functionalities.
+};
 
 @NgModule({
   imports: [
@@ -24,7 +31,7 @@ import { LanguagesService } from './user-snippets/snippet-edit/languages.service
     DashboardRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    MonacoEditorModule,
+    MonacoEditorModule.forRoot(monacoConfig),
     FormsModule,
     HttpClientModule,
     HttpModule
@@ -38,7 +45,10 @@ import { LanguagesService } from './user-snippets/snippet-edit/languages.service
     UserSnippetComponent,
     SnippetTableComponent
   ],
-  providers: [LanguagesService]
+  providers: [
+    LanguagesService,
+    SnippetsService
+  ]
 })
 export class DashboardModule {
 

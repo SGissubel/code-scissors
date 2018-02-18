@@ -11,6 +11,7 @@ import { IAuthData } from '../dashboard/models/user.model';
 export class AuthService {
   isLoggedIn = new Subject<boolean>();
   error = new Subject<any>();
+  userID = new Subject<string>();
   private user: IUser;
   private isAuthenticated: boolean;
 
@@ -21,6 +22,7 @@ export class AuthService {
   initAuthListener() {
     this.afAuth.authState.subscribe(user => {
       if (user) {
+        this.userID = user.uid;
         this.isAuthenticated = true;
         this.isLoggedIn.next(true);
         this.router.navigate(['/dashboard']);
