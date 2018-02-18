@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
+import { IScreenName } from '../../dashboard/models/user.model';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -22,7 +23,15 @@ export class SignupComponent implements OnInit {
   }
 
   onSignup(signUpForm: NgForm) {
-    this.authService.registerUser(signUpForm.value);
+    const emailPass = {
+      email: signUpForm.value.email,
+      password: signUpForm.value.password
+    };
+    const screenname: IScreenName = {
+      screen_name: signUpForm.value.screenname
+    };
+    this.authService.registerUser(emailPass, screenname);
   }
 
 }
+

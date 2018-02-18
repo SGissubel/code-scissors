@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
 import { SnippetsService } from '../services/snippets.service';
-import { UserDataService } from '../services/userData.sevice';
+import { UserDataService } from '../services/userData.service';
 import { ISnippet } from '../models/snippets.model';
 
 @Component({
@@ -12,12 +12,10 @@ import { ISnippet } from '../models/snippets.model';
   styleUrls: ['./dashboard-home.component.scss']
 })
 export class DashboardHomeComponent implements OnInit, OnDestroy {
-  user: {id: number, name: string};
   snippets: ISnippet[] = [];
   snippetSubscription: Subscription;
 
-  constructor(private userService: UserDataService,
-              private snipService: SnippetsService) { }
+  constructor(private snipService: SnippetsService) { }
 
   ngOnInit() {
     this.snippetSubscription = this.snipService.snippetsAdded
@@ -29,9 +27,6 @@ export class DashboardHomeComponent implements OnInit, OnDestroy {
       );
     this.snipService.fetchCreatedSnippets();
     this.snipService.fetchAvailableSnippets();
-    // this.user = this.userService.getuserData();
-    // this.snippets = get all snippet data
-    console.log(this.user);
   }
 
   ngOnDestroy() {

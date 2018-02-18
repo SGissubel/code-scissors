@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Subject } from 'rxjs/Subject';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
@@ -14,13 +14,7 @@ export class SnippetsService {
   constructor(private db: AngularFirestore,
               private router: Router,
               private authService: AuthService) {
-    this.authService.userID
-      .subscribe(
-        (id) => {
-          this.userID = id;
-        }
-      );
-      debugger;
+    this.userID = this.authService.getUserID();
   }
 
   fetchAvailableSnippets() {
@@ -33,6 +27,8 @@ export class SnippetsService {
   fetchCreatedSnippets() {
     this.db
       .collection('snippets')
+      .doc(this.userID)
+      .collection('user-snippets')
       .valueChanges()
       .subscribe((snippets: ISnippet[]) => {
         this.snippetsAdded.next(snippets);
@@ -42,10 +38,14 @@ export class SnippetsService {
   private storeNewSnippet(snippet: ISnippet) {
     const itemId = this.db.createId();
     const createdAt = firebase.firestore.FieldValue.serverTimestamp();
-    const itemDoc = this.db.doc('snippets');
-    const userDoc = this.db.doc(this.userID);
     const item = { ...snippet, id: itemId, created_at: createdAt};
     this.db.collection('snippets').doc(this.userID).collection('user-snippets').add(item);
+    if (!snippet.private) this.storePublicSnippet(snippet);
+    else this.router.navigate(['dashboard']);
+  }
+
+  private storePublicSnippet(snippet: ISnippet) {
+    this.db.collection('snippets').doc('public_snippets').collection('snippets').add(snippet);
     this.router.navigate(['dashboard']);
   }
 

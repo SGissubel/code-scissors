@@ -7,3 +7,7 @@ export interface IAuthData {
   email: string;
   password: string;
 }
+
+export interface IScreenName {
+  screen_name: string;
+}

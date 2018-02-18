@@ -29,7 +29,7 @@ import { MaterialModule } from './material.module';
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
-import { UserDataService } from './dashboard/services/userData.sevice';
+import { UserDataService } from './dashboard/services/userData.service';
 import { UIService } from './shared/ui.service';
 
 
