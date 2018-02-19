@@ -30,6 +30,7 @@ import { MaterialModule } from './material.module';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
 import { UIService } from './shared/ui.service';
+import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { UIService } from './shared/ui.service';
     LoginSignupComponent,
     SignupComponent,
     PageNotFoundComponent,
+    FooterHomeComponent,
   ],
   imports: [
     BrowserModule,
