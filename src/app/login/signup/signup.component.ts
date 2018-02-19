@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-
-import { IScreenName } from '../../dashboard/models/user.model';
+import { FooterService } from '../../home-page/footer.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -17,9 +16,11 @@ export class SignupComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private footerService: FooterService) { }
 
   ngOnInit() {
+    this.footerService.homePageCheck();
   }
 
   onSignup(signUpForm: NgForm) {
@@ -29,6 +30,8 @@ export class SignupComponent implements OnInit {
     };
     this.authService.registerUser(emailPass);
   }
+
+
 
 }
 

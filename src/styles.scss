@@ -11,6 +11,17 @@ html, body {
   overflow-x: hidden; 
 }
 
+span, p, button, a {
+  font-family: "Montserrat";
+  font-weight: 900;
+  letter-space: 3px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 900 !important;
+  letter-spacing: 3px !important;
+}
+
 #page-container {
   position: relative;
   top: -459px;
