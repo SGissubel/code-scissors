@@ -10,6 +10,14 @@ html, body {
   overflow-x: hidden; 
 }
 
+#page-container {
+  position: relative;
+  top: -459px;
+  margin-bottom: -459px;
+  z-index: 300;
+  background: transparent;
+}
+
 footer.page-footer {
   padding-top: 3em;
   margin-top: 0;

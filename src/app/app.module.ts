@@ -30,7 +30,6 @@ import { MaterialModule } from './material.module';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
 import { UIService } from './shared/ui.service';
-import { HeaderBodyComponent } from './nav/header/header-body/header-body.component';
 
 
 @NgModule({
@@ -45,7 +44,6 @@ import { HeaderBodyComponent } from './nav/header/header-body/header-body.compon
     LoginSignupComponent,
     SignupComponent,
     PageNotFoundComponent,
-    HeaderBodyComponent,
   ],
   imports: [
     BrowserModule,
