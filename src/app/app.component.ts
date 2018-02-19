@@ -23,13 +23,19 @@ export class AppComponent implements OnInit {
       .subscribe(
         (bool) => {
           this.notOnHomePage = bool;
+          
+        },
+        err => {
+          // console.log(err)
         }
       );
+
     this.authService.isLoggedIn
       .subscribe(
       authStatus => {
         this.isAuth = authStatus;
         }
       );
+    console.clear();
   }
 }

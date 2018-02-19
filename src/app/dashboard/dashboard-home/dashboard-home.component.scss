@@ -2,7 +2,14 @@
   text-align: center; 
   color: white;
   a {
+    transition:all 0.3s ease;
     color: black;
     letter-spacing: 3px;
+  }
+  .fade {
+    opacity:0.75;
+  }
+  .fade:hover {
+    opacity:1;
   }
 }
