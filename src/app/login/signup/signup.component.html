@@ -1,43 +1,38 @@
 <section>
-    <form 
-      fxLayout="column"
-      fxLayoutAlign="center center"
-      fxLayoutGap="2em"
-       #signupForm="ngForm"
-      (ngSubmit)="onSignup(signupForm)">
+  <form 
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="2em"
+     #signupForm="ngForm"
+    (ngSubmit)="onSignup(signupForm)">
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        ngModel
+        name="email"
+        email
+        required
+        #email="ngModel">
+    </mat-form-field>
+    <mat-error></mat-error>
+    <mat-form-field>
+      <input 
+        matInput
+        type="password"
+        placeholder="Password" 
+        ngModel
+        name="password"
+        required 
+        minlength="6" 
+        #password="ngModel">
+      </mat-form-field>
+
       <div class="row">
-        <div class="col-md-12">
-          <h3>Sign Up</h3>
+        <div class="col-xs-12">
+          <button type="submit" mat-raised-button [disabled]="signupForm.invalid">SIGN UP</button>
         </div>
       </div>
-      <mat-form-field>
-        <input
-          matInput
-          type="email"
-          placeholder="Email"
-          ngModel
-          name="email"
-          email
-          required
-          #email="ngModel">
-      </mat-form-field>
-      <mat-error></mat-error>
-      <mat-form-field>
-        <input 
-          matInput
-          type="password"
-          placeholder="Password" 
-          ngModel
-          name="password"
-          required 
-          minlength="6" 
-          #password="ngModel">
-        </mat-form-field>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <button type="submit" mat-raised-button [disabled]="signupForm.invalid">SIGN UP</button>
-          </div>
-        </div>
-    </form>
-  </section>
+  </form>
+</section>

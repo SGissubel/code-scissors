@@ -1,1 +1,13 @@
-<router-outlet></router-outlet>
+<div class="card card-image">  
+  <div class="row">
+    <div class="col-md-12">
+      <ng-container *ngIf="isNotLoginRoute">
+        <h3>SIGN UP FOR A CODE SCISSORS ACCOUNT</h3>
+      </ng-container>
+      <ng-container *ngIf="!isNotLoginRoute">
+        <h3>LOGIN</h3>
+      </ng-container>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
