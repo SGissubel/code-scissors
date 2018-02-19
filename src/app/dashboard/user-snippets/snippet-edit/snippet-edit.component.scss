@@ -1,5 +1,25 @@
+
+#editor-div {
+  background: white;
+  position: relative;
+  height: 1100px;
+  border: 1px solid silver;
+  width: 95%;
+  margin: 0 auto;
+}
+
+form {
+  margin-left: 5em;
+  margin-top: 2em;
+}
+
 #formSection {
 	margin-bottom: 7em;
+}
+
+mat-form-field {
+  font-family: "Montserrat" !important;
+  width: 500px;
 }
 
 .overflow-guard,
@@ -15,13 +35,25 @@
 mat-checkbox {
   position: relative;
 }
+.editor-words {
+  margin-left: 5em;
+  position: relative;
+  bottom: 1.5em;
+  letter-spacing: 3px;
+  font-weight: 600
+}
 
-mat-hint {
+.button-row {
   position: absolute;
-  top: 25px;
-  left: 25px;
-  font-size: 14px;
-  color: cornflowerblue;
+  bottom: -600px;
+  right: -54px;
+  button {
+    width: 250px;
+    padding: 5px;
+    letter-spacing: 3px;
+    background: #736acb;
+    color: white;
+  }
 }
 
 .tagDiv {
@@ -38,3 +70,31 @@ mat-hint {
 .tagDiv i {
 	float: right;
 }
+
+#checkBox {
+  position: absolute;
+  min-height: 100px;
+  min-width: 380px;
+  overflow: -webkit-paged-x;
+  bottom: -545px;
+  left: 94px;
+  margin-right: 0 !important;
+  #privacy-hint_Public {
+    position: absolute;
+    top: 18px;
+    left: 2px;
+    font-size: 14px;
+    color: cornflowerblue;
+    line-height: 21px;
+  }
+  #privacy-hint_Private {
+    position: absolute;
+    top: 18px;
+    left: 2px;
+    font-size: 14px;
+    color: cornflowerblue;
+    line-height: 21px;
+  }
+}
+
+

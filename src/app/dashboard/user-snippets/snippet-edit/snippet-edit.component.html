@@ -1,87 +1,91 @@
-<div class="row">
-  <div class="col-md-12">
-    <h3>Create a new Snippet!</h3>
+<div id="editor-div">
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <section id="formSection">
+        <form
+          fxLayout="column"
+          #codeTags="ngForm"
+          (ngSubmit)="oncodeTagsSubmit(codeTags)">
+          <mat-form-field>
+            <input
+              type="text" 
+              matInput
+              placeholder="Name For Snippet"
+              ngModel
+              name="snippetname"
+              snippetname
+              #snippetname="ngModel"
+              required>
+          </mat-form-field>
+          <mat-form-field >
+          	<mat-select 
+              id="languageSelect"
+              placeholder="Choose an Language"
+              ngModel
+              name="language"
+              (change)="handleSetLanguage($event)"
+              required>
+      				<mat-option *ngFor="let language of languages" [value]="language.value" name="language.value">
+      					{{ language.name }}
+      				</mat-option>
+      			</mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input
+            	name="tag"
+            	type="text"
+              matInput
+              placeholder="Add Addition Tags"
+              ngModel
+              tag
+              #tag="ngModel">
+              <a (click)="addTag(tag)"><i class="material-icons">add_circle</i></a>
+          </mat-form-field>
+          <span></span>
+          <span id="checkBox">
+            <mat-checkbox
+              matInput
+              ngModel
+              name="private"
+              private
+              (change)="onChangePrivacy()"
+              #private>Make Snippet Private?
+              <mat-hint *ngIf="privacySetting" id="privacy-hint_Private" class="privacy-hint">Set to Private</mat-hint>
+              <mat-hint *ngIf="!privacySetting" id="privacy-hint_Public" class="privacy-hint"><i>If you do not mark private, this code<br> will be viewable by all Code Scissor Members</i></mat-hint>
+            </mat-checkbox>
+            </span>
+           <div class="row button-row">
+            <div class="col-xs-12">
+              <button type="submit" mat-raised-button color="primary" [disabled]="codeTags.invalid" >SAVE SNIPPET</button>
+            </div>
+          </div>
+        </form>
+        
+      </section>
+    </div>
   </div>
-</div>
-
-<section id="formSection">
-  <form
-    fxLayout="row"
-    fxLayoutAlign="center center"
-    fxLayoutGap="5em"
-    #codeTags="ngForm"
-    (ngSubmit)="oncodeTagsSubmit(codeTags)">
-    <mat-form-field >
-    	<mat-select 
-        id="languageSelect"
-        placeholder="Choose an Language"
-        ngModel
-        name="language"
-        (change)="handleSetLanguage($event)"
-        required>
-				<mat-option *ngFor="let language of languages" [value]="language.value" name="language.value">
-					{{ language.name }}
-				</mat-option>
-			</mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-      	name="tag"
-      	type="text"
-        matInput
-        placeholder="Add Addition Tags"
-        ngModel
-        tag
-        #tag="ngModel">
-        <a (click)="addTag(tag)" matSuffix><i class="material-icons">add_circle</i></a>
-    </mat-form-field>
-    <span></span>
-    <mat-form-field>
-    	<input
-    		type="text" 
-        matInput
-        placeholder="Name For Snippet"
-        ngModel
-        name="snippetname"
-        snippetname
-        #snippetname="ngModel"
-        required>
-    </mat-form-field>
-      <mat-checkbox
-        matInput
-        ngModel
-        name="private"
-        private
-        (change)="onChangePrivacy()"
-        #private>Make Snippet Private?
-        <mat-hint *ngIf="privacySetting">Set to Private</mat-hint>
-        <mat-hint *ngIf="!privacySetting">Set to Public</mat-hint>
-      </mat-checkbox>
-
-
-
-    <div class="row">
-      <div class="col-xs-12">
-        <button type="submit" mat-raised-button color="primary" [disabled]="codeTags.invalid" >SAVE SNIPPET</button>
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <div>
+        <section 
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          fxLayoutGap="10px">
+          <div class="tagDiv" *ngFor="let tag of otherTags; let i = index">
+            <span class="tagSpan">{{ tag }}</span>
+            <a (click)="onRemoveTag(i)">
+              <i class="material-icons">delete_forever</i>
+            </a>
+          </div>
+        </section>
       </div>
     </div>
-  </form>
-  <div>
-    <section 
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      fxLayoutGap="10px">
-      <div class="tagDiv" *ngFor="let tag of otherTags; let i = index">
-        <span class="tagSpan">{{ tag }}</span><a (click)="onRemoveTag(i)"><i class="material-icons">delete_forever</i></a>
-      </div>
-    </section>
   </div>
-</section>
 
-
-
-<ngx-monaco-editor
-  id="monaco-editor" 
-	[options]="editorOptions" 
-	[(ngModel)]="code"></ngx-monaco-editor>
-	
+  <span class="editor-words"> Enter Your Code Snippet Below:*</span>
+  <ngx-monaco-editor
+    id="monaco-editor" 
+  	[options]="editorOptions" 
+  	[(ngModel)]="code"></ngx-monaco-editor>
+  	
+</div>
