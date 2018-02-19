@@ -1,0 +1,40 @@
+.homeBodyContainer {
+  position: relative;
+  overflow: -webkit-paged-x;
+}
+
+.iconRow {
+  margin-top: 4em;
+  display: flex;
+  margin-bottom: 8em;
+  .headText {
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+}
+
+.iconParentDiv { 
+  width: 300px;
+  margin: 0 auto;
+}
+
+.iconDiv {
+  position: relative;
+  min-height: 140px;
+}
+
+#leftIcon .iconParentDiv {
+  margin-left: 30%;
+}
+
+.iconDivCenter {
+  position: relative;
+  top: -13px;
+}
+
+#rightIcon .iconParentDiv {
+  margin-right: 30%;
+}
+
+
+

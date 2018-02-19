@@ -1,39 +1,70 @@
-.navCont {
-  background: #3c3c3c;  
+.backgroundImg {
+  background-image: url("../../../assets/images/background-new.jpg");
+  background-size: 100% 100%;
+  height: 803px;
 }
 
-.navbar .dropdown-menu a:hover {
-  color: blue !important;
-}
-
-.navbar .dropdown-menu li {
-  padding: 3px 1em !important;
+.container-fluid {
+  position: absolute;
+  top: 12px;
 }
 
 .navbar {
+  z-index: 300;
   box-shadow: none;
+  .dropdown-menu a:hover {
+    color: blue !important;
+  }
+  .dropdown-menu li {
+    padding: 3px 1em !important;
+  }
+  .navbar-brand {
+  padding-left: 1em;
+    img {
+      width: 272px;
+      vertical-align: middle;
+      border-style: none;
+    }
+  }
+}
+#navleft{
+  position: relative;
+  top: 10px;
 }
 
+#loginLink{    
+  position: absolute;
+  top: -26px;
+  right: 22px;
+  i {
+    color: white;
+  }
+  a {
+    font-size: 13px;
+    position: relative;
+    bottom: 3px;
+  }
+}
+ 
 .navbar-nav {
   flex-direction: inherit;
-}
-
-.navbar-nav li a {
-  margin-right: 1em;
+  li a {
+    letter-spacing: 1px;
+    margin-right: 2em;
+    color: white;
+  }
 }
 
 .dropdown-menu {
   position: absolute !important;
   white-space: nowrap;
-}
-
-.dropdown-menu li {
-  padding: 0 1em;
-}
-
-.dropdown-toggle,
-.logout {
-  color: #0275d8 !important;
+  li {
+    padding: 0 1em;
+  }
+  .dropdown-toggle,
+  .logout {
+    color: white !important;
+  }
 }
 
 .open ul {
