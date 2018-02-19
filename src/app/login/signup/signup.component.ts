@@ -27,10 +27,7 @@ export class SignupComponent implements OnInit {
       email: signUpForm.value.email,
       password: signUpForm.value.password
     };
-    const screenname: IScreenName = {
-      screen_name: signUpForm.value.screenname
-    };
-    this.authService.registerUser(emailPass, screenname);
+    this.authService.registerUser(emailPass);
   }
 
 }

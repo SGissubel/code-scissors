@@ -1,7 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-
-import { UserDataService } from './services/userData.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,22 +8,13 @@ import { UserDataService } from './services/userData.service';
 export class DashboardComponent implements OnInit, OnDestroy {
   user: string;
   snippets: any[];
-  userSubscription: Subscription;
 
-  constructor(private userService: UserDataService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.userSubscription = this.userService.userInfo
-      .subscribe(
-        (user) => {
-          debugger;
-          this.user = user;
-        }
-      );
   }
 
   ngOnDestroy() {
-    this.userSubscription.unsubscribe();
   }
 
 }

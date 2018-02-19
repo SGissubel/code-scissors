@@ -12,8 +12,8 @@ const dashboardRoutes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
     { path: '', component: DashboardHomeComponent },
-    { path: ':id/user/detail', component: DashboardUserDetailComponent },
-    { path: ':id/edit', component: UserSnippetComponent },
+    { path: 'user/detail', component: DashboardUserDetailComponent },
+    { path: 'edit', component: UserSnippetComponent },
     { path: 'new', component: UserSnippetComponent }
   ]},
 ];

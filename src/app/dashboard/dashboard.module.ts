@@ -17,7 +17,6 @@ import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SnippetsService } from './services/snippets.service';
-import { UserDataService } from './services/userData.service';
 import { LanguagesService } from './user-snippets/snippet-edit/languages.service';
 
 const monacoConfig: NgxMonacoEditorConfig = {
@@ -49,7 +48,6 @@ const monacoConfig: NgxMonacoEditorConfig = {
   providers: [
     LanguagesService,
     SnippetsService,
-    UserDataService
   ]
 })
 export class DashboardModule {

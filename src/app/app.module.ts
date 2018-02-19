@@ -29,7 +29,6 @@ import { MaterialModule } from './material.module';
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
-import { UserDataService } from './dashboard/services/userData.service';
 import { UIService } from './shared/ui.service';
 
 
@@ -63,7 +62,7 @@ import { UIService } from './shared/ui.service';
     FlexLayoutModule
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [UserDataService, AuthService, UIService],
+  providers: [AuthService, UIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

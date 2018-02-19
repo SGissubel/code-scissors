@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Subject } from 'rxjs/Subject';
-import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import * as firebase from 'firebase';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+
 import { ISnippet } from '../models/snippets.model';
 import { AuthService } from '../../login/auth.service';
 
 @Injectable()
 export class SnippetsService {
   snippetsAdded = new Subject<ISnippet[]>();
+  snippetsExist = new Subject<boolean>();
+  garbage: Observable<any[]>;
   userID: string;
 
   constructor(private db: AngularFirestore,
@@ -32,7 +38,16 @@ export class SnippetsService {
       .valueChanges()
       .subscribe((snippets: ISnippet[]) => {
         this.snippetsAdded.next(snippets);
+        if (snippets.length) this.snippetsExist.next(true);
+      }, error => {
+        console.log(error);
       });
+  }
+
+  updateSnippet(snippet: ISnippet) {
+    const selectedSnip = snippet.id;
+    this.db.doc<any>(`snippets/${this.userID}/user-snippets/${selectedSnip}`)
+      .update(snippet);
   }
 
   private storeNewSnippet(snippet: ISnippet) {
@@ -50,3 +65,5 @@ export class SnippetsService {
   }
 
 }
+
+

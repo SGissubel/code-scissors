@@ -1,7 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
 
 import { SnippetsService } from '../../services/snippets.service';
 import { LanguagesService } from './languages.service';
@@ -12,7 +10,7 @@ import { ISnippet, ISnipForm } from '../../models/snippets.model';
   templateUrl: './snippet-edit.component.html',
   styleUrls: ['./snippet-edit.component.scss']
 })
-export class SnippetEditComponent implements OnInit, OnDestroy {
+export class SnippetEditComponent implements OnInit {
   addedNewInput = 0;
   code = '<p></p>';
   currentLanguage: string;
@@ -20,28 +18,17 @@ export class SnippetEditComponent implements OnInit, OnDestroy {
   editorOptions = { theme: 'vs-dark', language: 'html'};
   id: number;
   languages: Object[];
-  otherTags: string[];
-  privacySetting: boolean;
+  otherTags: string[] = [];
+  privacySetting = false;
   tag: string;
   snippetname: string;
   currentSnippet: any;
-  snippetSubscription: Subscription;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private langService: LanguagesService,
+  constructor(private langService: LanguagesService,
               private snipService: SnippetsService) { }
 
   ngOnInit() {
     this.languages = this.langService.getLanguages();
-    this.snippetSubscription = this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          this.editMode = params['id'] != null;
-          this.initCode();
-        }
-      );
   }
 
   onChangePrivacy() {
@@ -49,14 +36,16 @@ export class SnippetEditComponent implements OnInit, OnDestroy {
   }
 
   handleSetLanguage(language) {
-    window.monaco.editor.setModelLanguage(
-      window.monaco.editor
+    window['monaco'].editor.setModelLanguage(
+      window['monaco'].editor
       .getModels()[0], language.value
     );
   }
 
   addTag(tag: NgForm) {
+    debugger;
     this.otherTags.push(tag.value);
+
   }
 
   onRemoveTag(index: number) {
@@ -71,8 +60,9 @@ export class SnippetEditComponent implements OnInit, OnDestroy {
       code: this.code,
       language: snippet.value.language,
       favorite: false,
-      private: snippet.value.private
+      private: snippet.value.private || false
     };
+    debugger;
     this.snipService.createdNewSnippet(newSnip);
   }
 
@@ -91,10 +81,6 @@ export class SnippetEditComponent implements OnInit, OnDestroy {
       this.handleSetLanguage(this.currentSnippet.language);
     }
 
-  }
-
-  ngOnDestroy() {
-    this.snippetSubscription.unsubscribe();
   }
 
 }
