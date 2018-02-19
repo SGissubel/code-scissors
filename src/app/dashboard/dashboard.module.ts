@@ -19,19 +19,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SnippetsService } from './services/snippets.service';
 import { LanguagesService } from './user-snippets/snippet-edit/languages.service';
 
-const monacoConfig: NgxMonacoEditorConfig = {
-  baseUrl: 'app-name/assets',
-  defaultOptions: { scrollBeyondLastLine: false }, // pass deafult options to be used
-  onMonacoLoad: () => { console.log((<any>window).monaco); } // here monaco object will be avilable as window.monaco use this function to extend monaco editor functionalities.
-};
-
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    MonacoEditorModule.forRoot(monacoConfig),
+    MonacoEditorModule,
     FormsModule,
     HttpClientModule,
     HttpModule

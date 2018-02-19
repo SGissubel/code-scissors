@@ -32,6 +32,7 @@
           </mat-form-field>
           <mat-form-field>
             <input
+            style="width: 268px"
             	name="tag"
             	type="text"
               matInput
@@ -63,13 +64,10 @@
         
       </section>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-md-6">
+    <div class="col-xs-6 col-md-6" style="margin: auto">
       <div>
         <section 
-          fxLayout="row"
-          fxLayoutAlign="center center"
+          fxLayoutAlign="center"
           fxLayoutGap="10px">
           <div class="tagDiv" *ngFor="let tag of otherTags; let i = index">
             <span class="tagSpan">{{ tag }}</span>
@@ -81,6 +79,7 @@
       </div>
     </div>
   </div>
+
 
   <span class="editor-words"> Enter Your Code Snippet Below:*</span>
   <ngx-monaco-editor
