@@ -18,12 +18,12 @@ export class AppComponent implements OnInit {
               private footServ: FooterService) { }
 
   ngOnInit() {
-    this.authService.initAuthListener(); 
+    this.authService.initAuthListener();
     this.footServ.isNotOnHomePage
       .subscribe(
         (bool) => {
           this.notOnHomePage = bool;
-          
+          console.clear();
         },
         err => {
           // console.log(err)
@@ -36,6 +36,5 @@ export class AppComponent implements OnInit {
         this.isAuth = authStatus;
         }
       );
-    console.clear();
   }
 }
