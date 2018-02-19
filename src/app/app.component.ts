@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
     this.footServ.isNotOnHomePage
       .subscribe(
         (bool) => {
-          debugger;
           this.notOnHomePage = bool;
         }
       );
@@ -33,14 +32,4 @@ export class AppComponent implements OnInit {
         }
       );
   }
-
-  // setFooter() {
-  //   const isNotOnHomePage = this.location.location.href.indexOf('signup') !== -1
-  //     || this.location.location.href.indexOf('login') !== -1
-  //     || this.isAuth === true;
-
-  //   if (isNotOnHomePage) {
-  //     this.notOnHomePage = true;
-  //   }
-  // }
 }

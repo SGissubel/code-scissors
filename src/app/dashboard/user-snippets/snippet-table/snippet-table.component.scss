@@ -1,9 +1,24 @@
 .container {
-  padding: 0 2em;
-  display: flex;
-  min-width: 300px;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -158px;
+    background: white;
+    bottom: -712px;
 }
 
+.addNewSnipBtn {
+  position: relative;
+  width: 250px;
+  padding: 5px;
+  letter-spacing: 3px;
+  background: #736acb;
+  color: white;
+  right: -851px;
+  top: 31px;
+}
 
 .example-container {
   display: flex;

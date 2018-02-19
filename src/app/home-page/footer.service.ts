@@ -11,7 +11,6 @@ export class FooterService {
   homePageCheck() {
     const isNotOnHomePage = this.location.location.href.indexOf('signup') !== -1
       || this.location.location.href.indexOf('login') !== -1;
-    debugger;
 
     if (isNotOnHomePage) {
       this.isNotOnHomePage.next(true);
