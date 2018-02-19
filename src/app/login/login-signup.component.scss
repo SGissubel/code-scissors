@@ -1,18 +1,61 @@
+
 .card.card-image {
   position: relative;
-  top: -200px;
+  top: -113px;
   padding-bottom: 305px;
   background: transparent;
   box-shadow: none;
 }
 
+.headTitle {
+  width: 45%;
+  margin: 0 auto 3em;
+}
+
 section {
   padding: 2em;
-  width: 30%;
+  padding-top: 4em;
+  width: 45%;
+  height: 515px;
+  border: 1px solid silver;
   margin: 0 auto;
   background: white;
 }
 
 h3 {
+  font-size: 58px;
+  font-family: "Montserrat";
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.2;
   text-align: center;
 }
+
+mat-form-field {
+  width: 80%;
+}
+
+.mat-form-field-label {
+  color: black;
+}
+
+.loginSubmit {
+  width: 100%;
+  div {
+    width: 100%;
+    text-align: center;
+    padding-top: 3em;
+    button {
+      font-size: 17px;
+      letter-spacing: 4px;
+      background-color: #736acb;
+      width: 80%;
+      height: 49px;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+
+

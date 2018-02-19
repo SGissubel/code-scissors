@@ -3,5 +3,6 @@
   <div id="page-container">
   	<router-outlet></router-outlet>
   </div>
-  <app-footer></app-footer>
+  <app-footer *ngIf="notOnHomePage"></app-footer>
+  <app-footer-home *ngIf="!notOnHomePage"></app-footer-home>
 </div>

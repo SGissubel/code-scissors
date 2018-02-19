@@ -1,11 +1,15 @@
+#dashboardContainer {
+  position: relative;
+  top: -250px;
+}
+
 .head {
   margin: 0;
-  background: rgba(227, 227, 222, 1);
-
+  background: transparent;
+  color: white;
 }
 
 .headCont {
-  margin: 0 5em 5em 0;
   padding: 1em 1em;
 }
 

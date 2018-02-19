@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PlatformLocation } from '@angular/common';
+
+import { FooterService } from './footer.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private footerService: FooterService,
+              private location: PlatformLocation) {}
 
   ngOnInit() {
+    this.footerService.homePageCheck();
   }
 
 }

@@ -30,6 +30,7 @@ import { MaterialModule } from './material.module';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { AuthService } from './login/auth.service';
 import { UIService } from './shared/ui.service';
+import { FooterService } from './home-page/footer.service';
 import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.component';
 
 
@@ -64,7 +65,7 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
     FlexLayoutModule
     ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [AuthService, UIService],
+  providers: [AuthService, UIService, FooterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

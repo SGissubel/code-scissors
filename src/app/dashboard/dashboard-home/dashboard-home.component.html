@@ -1,10 +1,9 @@
-<div class="row">
-  <div class="col-xs-8 col-md-8">
-    <h3>Your Snippets</h3>
+<div class="row" style="margin-top: 10em;">
+  <div class="col-xs-12 col-md-12" fxLayoutAlign="center center">
     <app-snippet-table *ngIf="snippetsExist"></app-snippet-table>
-    <div *ngIf="!snippetsExist">
+    <div id="noSnippetDiv" *ngIf="!snippetsExist">
       <p>You currently have no snippets saved</p>
-      <a routerLink="new">Create your first snippet!</a>
+      <a mat-raised-button routerLink="new">Create your first snippet!</a>
     </div>    
   </div>
 </div>
