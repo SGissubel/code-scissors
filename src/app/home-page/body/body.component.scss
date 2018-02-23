@@ -32,9 +32,58 @@
   top: -13px;
 }
 
+.iconDivLeft {
+  position: relative;
+  top: 3px;
+}
+
+.iconDivRight {
+  position: relative;
+  bottom: 4px;
+}
+
 #rightIcon .iconParentDiv {
   margin-right: 30%;
 }
+
+@media (max-width: 768px) {
+  .iconParentDiv {
+    margin: 0 auto 61px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 890px) {
+
+  #leftIcon .iconParentDiv {
+    margin-left: 13px;
+  }
+
+  .iconParentDiv {
+    width: 216px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 891px) and (max-width: 995px) {
+  .iconParentDiv {
+    width: 269px;
+    margin: 0 auto;
+  }
+
+  #leftIcon .iconParentDiv {
+    margin-left: 5%;
+  }
+}
+
+@media (min-width: 995px) and (max-width: 1180px) {
+  #leftIcon .iconParentDiv {
+    margin-left: 18%;
+  }
+}
+
+
+
+
 
 
 
