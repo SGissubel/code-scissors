@@ -5,6 +5,42 @@
         <img src="../../assets/images/whitelogo.png">
       </a>
     </div>
+    <ng-container class="burger-nav">
+      <button id="burger-dropdown" mat-button [matMenuTriggerFor]="menu">
+        <i class="material-icons">reorder</i>
+      </button>
+      <div class="navbar">
+        <mat-menu class="mat-menu_head" #menu="matMenu">
+          <button class="mat-menu_buttons" mat-menu-item>
+            <a routerLinkActive="active" routerLink="/">HOME</a>
+          </button>
+          <button class="mat-menu_buttons" mat-menu-item>
+            <a routerLinkActive="active">ABOUT</a>
+          </button>
+          <button class="mat-menu_buttons" mat-menu-item>
+            <a routerLinkActive="active">CONTACT</a>
+          </button>
+          <ng-container *ngIf="!isAuth">
+            <button class="mat-menu_buttons" mat-menu-item>
+              <a routerLinkActive="active" routerLink="login">LOGIN</a>
+            </button>
+            <button class="mat-menu_buttons" mat-menu-item>
+              <a routerLinkActive="active" routerLink="login/signup">SIGN UP</a>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="isAuth">
+            <button class="mat-menu_buttons" mat-menu-item>
+              <a routerLinkActive="active" routerLink="dashboard">DASHBOARD</a>
+            </button>
+            <button class="mat-menu_buttons" mat-menu-item>
+              <a routerLinkActive="active" (click)="onLogOut()">LOG OUT</a>
+            </button>
+          </ng-container>
+          
+        </mat-menu>
+      </div>
+    </ng-container>
+    
     <div id="navleft" class="navbar">
       <ul class="nav navbar-nav navbar-left">
         <li><a routerLink="/">HOME</a></li>

@@ -28,3 +28,23 @@ h1 {
   font-weight: 800;
   letter-spacing: 4px;
 }
+
+.page-head_title h1 {
+  text-align: center;
+}
+
+@media (min-width: 768px) and (max-width: 890px) {
+  .card.card-image {
+    padding-bottom: 207px;
+  }
+
+  .card.card-image {
+    padding-bottom: 207px;
+  }
+}
+
+@media (max-width: 667px) {
+  .card.card-image {
+    padding-bottom: 169px;
+  }
+}

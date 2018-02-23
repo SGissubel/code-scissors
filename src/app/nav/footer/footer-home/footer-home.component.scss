@@ -15,9 +15,17 @@ footer.page-footer {
   margin-top: 0;
 }
 
-@media (max-width: 992px) and (min-width: 768px) {
+@media (max-width: 992px) {
+  .footer-aboutDiv {
+    margin-right: 0 !important;
+  }
   .footer-aboutDiv ul {
-    text-align: left;
-    margin-left: 6em;
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  #logo-footer {
+    margin-left: 0;
   }
 }
