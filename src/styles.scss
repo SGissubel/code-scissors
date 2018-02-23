@@ -74,16 +74,38 @@ ngx-monaco-editor {
 	box-shadow: none !important;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
+  #page-container {
+    top: -547px;
+    margin-bottom: -630px;
+  }
+}
+
+@media (max-width: 450px) and (min-width: 400px) {
   .mat-menu-panel {
-    min-width: 237px !important;
+    width: 237px !important;
     position: relative;
-    left: -88px;
+    left: -50%;
+  }
+  #cdk-overlay-0 {
+    left: 50% !important;
+  }
+
+}
+@media (max-width: 399px) {
+  .mat-menu-panel {
+    width: 237px !important;
+    position: relative;
+    left: -50%;
+  }
+
+  #cdk-overlay-0 {
+    left: 33% !important;
   }
 
 }
 
-@media (max-width: 775px) {
+@media (max-width: 775px) and (min-width: 501px) {
   #page-container {
     top: -479px;
     margin-bottom: -605px;

@@ -65,4 +65,26 @@ mat-form-field {
   }
 }
 
+@media (max-width: 765px) and (min-width: 547px) {
+  .headTitle {
+    width: 63%;
+  } 
+
+  section {
+    width: 63%;
+  }
+}
+@media (max-width: 546px) {
+  .headTitle {
+    width: 100%;
+    h3 {
+      font-size: 33px;
+    }
+  } 
+
+  section {
+    width: 96%;
+  }
+}
+
 
