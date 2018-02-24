@@ -69,6 +69,11 @@ ngx-monaco-editor {
   border-bottom: none;
 }
 
+.mat-table {
+  max-height: 77% !important;
+}
+
+
 .mat-input-element {
 	border-bottom: none !important;
 	box-shadow: none !important;
@@ -111,4 +116,12 @@ ngx-monaco-editor {
     margin-bottom: -605px;
   }
 }
+
+
+@media (max-width: 1700px) {
+  ngx-monaco-editor, ngx-monaco-editor .inputarea.ime-input {
+    height: 500px !important;
+  }
+}
+
 

@@ -43,7 +43,6 @@ export class SnippetEditComponent implements OnInit {
   }
 
   addTag(tag: NgForm) {
-    debugger;
     this.otherTags.push(tag.value);
 
   }
@@ -62,7 +61,6 @@ export class SnippetEditComponent implements OnInit {
       favorite: false,
       private: snippet.value.private || false
     };
-    debugger;
     this.snipService.createdNewSnippet(newSnip);
   }
 

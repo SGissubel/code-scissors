@@ -10,14 +10,14 @@
 }
 
 .addNewSnipBtn {
-  position: relative;
-  width: 250px;
-  padding: 5px;
-  letter-spacing: 3px;
   background: #736acb;
   color: white;
+  letter-spacing: 3px;
+  padding: 5px;
+  position: relative;
   right: -851px;
   top: 31px;
+  width: 250px;
 }
 
 .example-container {
@@ -39,4 +39,35 @@
 .mat-table {
   overflow: auto;
   max-height: 500px;
+}
+
+@media (max-width: 750px) {
+  .container {
+    top: -120px;
+    bottom: -527px;
+    overflow: scroll;
+  }
+
+  .addNewSnipBtn {
+    right: -128px;
+    top: 10px;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 1199px) {
+  .addNewSnipBtn {
+    right: -71%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 990px) {
+  .addNewSnipBtn {
+    right: -62%;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 767px) {
+  .addNewSnipBtn {
+    right: -52%;
+  }
 }

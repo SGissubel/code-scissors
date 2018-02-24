@@ -16,3 +16,27 @@
 .bodyCont {
   min-height: 500px;
 }
+
+@media (max-width: 780px) and (min-width: 501px){
+	#dashboardContainer {
+	  top: -174px;
+	}
+}
+
+@media (min-width: 447px) and (max-width: 500px) {
+	#dashboardContainer {
+    top: -43px;
+	}
+	.dashboard-head_title {
+		text-align: center;
+		h1 {
+			font-size: 31px;
+		}
+	}
+}
+
+@media (max-width: 446px) {
+	#dashboardContainer {
+    top: -124px;
+	}
+}

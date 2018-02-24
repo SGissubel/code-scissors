@@ -1,3 +1,7 @@
+.dashboard-home_row {
+  margin-top: 10em;
+}
+
 #noSnippetDiv {
   text-align: center; 
   color: white;
@@ -11,5 +15,11 @@
   }
   .fade:hover {
     opacity:1;
+  }
+}
+
+@media (max-width: 750px) {
+  .dashboard-home_row {
+    margin-top: 7em;
   }
 }
