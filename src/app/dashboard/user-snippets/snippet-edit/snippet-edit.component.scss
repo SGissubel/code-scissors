@@ -97,13 +97,24 @@ mat-checkbox {
   }
 }
 
+@media (max-width: 400px) {
+  #checkBox {
+    bottom: -841px;
+    left: 34px;
+  } 
+  .button-row {
+    bottom: -900px;
+    left: 72px;
+  }
+}
+
 @media (max-width: 505px) {
   .editor-words {
     margin-left: 1em;
   }
 }
 
-@media (max-width: 530px) {
+@media (min-width: 400px) and (max-width: 530px) {
   #checkBox {
     left: 38px;
     bottom: -815px;
@@ -142,9 +153,9 @@ mat-checkbox {
 }
 
 @media (min-width: 751px) and (max-width: 991px) {
-    #checkBox {
-      bottom: -815px;
-    } 
+  #checkBox {
+    bottom: -815px;
+  } 
   .button-row {
     bottom: -850px; 
   }

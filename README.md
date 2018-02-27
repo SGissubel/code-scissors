@@ -1,28 +1,16 @@
-# SnipSnap
+# Code-Scissors
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.0.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## About
 
-## Code scaffolding
+Code Scissors is a User-centered interface for developers. It was developed in Angular 5, using Angular Material, AngularFire, ScSS, Microft's Monaco Code-Editor, MDBootstrap, and Bootstrap.  As a developer, I know how often you spend hours looking for a piece of code to solve all your issues. Then, after you finally figure it out, you probably will forget the solution minutes later only to run into a similar issue not long after. Now you can store also those perfect nuggets all in one spot!
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Organizing Your Code
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+With all of your snippets in one location, Code Scissors introduces the perfect way to sort all of your snippets. You can either view them all in one location, or start filtering by the language, the date created, and any of the multiple tags you attached to your snippet. Additionally, a new feature coming soon, you'll be able to favorite some of your best work!
 
-## Running unit tests
+## Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Code Scissors is designed to allow a user to signup or login to an account to view a unique dashboard system where they can view all of their previously stored code snippets, or create a new snippet.  The snippet-storing-system is designed to allow any of 20 different code-languages to be selected for precise text-highlighting.  It contains an optional, additional tags to assign to a user's code-snippet, for later, easy searching between a user's own storage or for searching through the database of all users' snippets by key-word. The code-editor then allows any number of lines of code for either by typing out the code manually -- with ease of use text-prediction, based on the language you are using -- or simply cut and paste directly from the code into the code editor.  After a user has completed filling out the description, unique-naming, tags, and lines of code, the snippet will be saved directly into a personal user-database -- with an option for sharing the snippet with the Code Scissors online community, or keeping it private -- with a created-at date and time for later searchability, added directly to your dashboard along with all of a user's previously stored snippets.

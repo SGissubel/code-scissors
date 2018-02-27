@@ -73,6 +73,11 @@ ngx-monaco-editor {
   max-height: 77% !important;
 }
 
+.mat-cell, .mat-header-cell {
+  min-width: 161px !important;
+  overflow: scroll;
+  flex: 1;
+}
 
 .mat-input-element {
 	border-bottom: none !important;
@@ -114,6 +119,13 @@ ngx-monaco-editor {
   #page-container {
     top: -479px;
     margin-bottom: -605px;
+  }
+}
+
+@media (max-width: 991px) {
+  .mat-header-row,
+  .mat-row {
+    width: 800px;
   }
 }
 
