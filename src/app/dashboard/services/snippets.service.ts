@@ -31,17 +31,49 @@ export class SnippetsService {
   }
 
   fetchCreatedSnippets() {
+    const thing = ;
+
+    // this.snipObserve = thing.snapshotChanges()
+    //  .map(result => {
+    //    return result.map(doc => {
+    //      const data = doc.payload.doc.data as ISnippet;
+    //      const id = doc.paylod.doc.id;
+    //      return { id, ...data}
+    //    })
+    //    }
+    //  });
+
     this.db
       .collection('snippets')
       .doc(this.userID)
-      .collection('user-snippets')
-      .valueChanges()
-      .subscribe((snippets: ISnippet[]) => {
-        this.snippetsAdded.next(snippets);
-        if (snippets.length) this.snippetsExist.next(true);
-      }, error => {
-        console.log(error);
+      .collection<any>('user-snippets')
+      .snapshotChanges()
+      .map(results => {
+        return results.map((doc) => {
+          console.log(doc)
+        });
       });
+      //this code below I assume I would need to subscribe to recieve all newly created items
+      // .subscribe(result => {
+      //   for (const res of result) {
+      //     console.log(res.payload.doc.data());
+      //   }
+      // });
+
+
+
+      //the code below is working (just not what I need -- the above code will fetch me the specific id for accessing each stored "snippet")
+    // this.db
+    //   .collection('snippets')
+    //   .doc(this.userID)
+    //   .collection('user-snippets')
+    //   .valueChanges()
+    //   .subscribe((snippets: ISnippet[]) => {
+    //     this.snippetsAdded.next(snippets);
+    //     if (snippets.length) this.snippetsExist.next(true);
+    //   }, error => {
+    //     // console.log(error);
+    //   });
   }
 
   updateSnippet(snippet: ISnippet) {
