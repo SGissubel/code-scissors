@@ -31,7 +31,6 @@ export class SnippetsService {
   }
 
   fetchCreatedSnippets() {
-    const thing = ;
 
     // this.snipObserve = thing.snapshotChanges()
     //  .map(result => {
@@ -53,7 +52,7 @@ export class SnippetsService {
           console.log(doc)
         });
       });
-      //this code below I assume I would need to subscribe to recieve all newly created items
+      //this code below - I assume - I would need to subscribe to recieve all newly created items
       // .subscribe(result => {
       //   for (const res of result) {
       //     console.log(res.payload.doc.data());
