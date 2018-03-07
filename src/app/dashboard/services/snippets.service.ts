@@ -32,20 +32,10 @@ export class SnippetsService {
 
   fetchCreatedSnippets() {
 
-    // this.snipObserve = thing.snapshotChanges()
-    //  .map(result => {
-    //    return result.map(doc => {
-    //      const data = doc.payload.doc.data as ISnippet;
-    //      const id = doc.paylod.doc.id;
-    //      return { id, ...data}
-    //    })
-    //    }
-    //  });
-
     this.db
       .collection('snippets')
       .doc(this.userID)
-      .collection<any>('user-snippets')
+      .collection('user-snippets')
       .snapshotChanges()
       .map(results => {
         return results.map((doc) => {
