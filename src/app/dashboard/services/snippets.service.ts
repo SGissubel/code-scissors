@@ -49,19 +49,18 @@ export class SnippetsService {
               language: snippet.payload.doc.data().language,
               isprivate: snippet.payload.doc.data().private,
               favorite: snippet.payload.doc.data().favorite
-            }
+            };
         });
       })
       .subscribe(result => {
         this.snippetsAll.push(result);
         if (result) this.snippetsExist.next(true);
-        this.snippetsAdded.next(this.snippetsAll
+        this.snippetsAdded.next(this.snippetsAll);
       });
-    
 
 
 
-      //the code below is working (just not what I need -- the above code will fetch me the specific id for accessing each stored "snippet")
+     // the code below is working (just not what I need -- the above code will fetch me the specific id for accessing each stored "snippet")
     // this.db
     //   .collection('snippets')
     //   .doc(this.userID)
