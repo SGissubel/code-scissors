@@ -14,9 +14,14 @@ export class SnippetDataService {
   }
 
   getSnippet() {
-    return this.snippet;
+    if(Object.keys(this.snippet).length) {
+      return this.snippet;
+    } else {
+      return null;
+    }
   }
 
   clear() {
+    this.snippet = {};
   }
 }

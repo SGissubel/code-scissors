@@ -106,17 +106,13 @@ export class SnippetEditComponent implements OnInit {
       this.privacySetting = this.currentSnippet.private;
       
     }
-    console.log(this.currentSnippet);
-    console.log(this.currentLanguage);
-    console.log(this.otherTags);
-    console.log(this.snippetname);
-    console.log(this.code);
 
   }
 
   ngOnDestroy() {
     this.editMode = false;
-    // this.snipSubscription.unsubscribe();
+    this.currentSnippet = null;
+    this.snipDataService.clear();
   }
 
 }
