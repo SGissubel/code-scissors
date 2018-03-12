@@ -62,8 +62,8 @@ export class SnippetEditComponent implements OnInit {
   handleSetLanguage(language) {
     let curLanguage: string = '';
 
-    if (typeof (language === "string")) curLanguage = language;
-    else curLanguage = language.value;
+    if (language.value) curLanguage = language.value;
+    else curLanguage = language;
     window['monaco'].editor.setModelLanguage(
       window['monaco'].editor
       .getModels()[0], curLanguage
