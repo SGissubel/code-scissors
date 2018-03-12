@@ -60,12 +60,12 @@ export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy
     this.privacySetting = !this.privacySetting;
   }
 
-  handleSetLanguage(language) {
+  handleSetLanguage(newLang) {
     let curLanguage = '';
     let editorNotPresent = false;
 
-    if (language.value) {
-      this.currentLanguage = language.value;
+    if (newLang.value) {
+      this.currentLanguage = newLang.value;
       curLanguage = this.currentLanguage;
     } else curLanguage = this.currentLanguage;
 

@@ -7,6 +7,7 @@ export interface ISnippet {
   code: string;
   favorite?: boolean;
   private: boolean;
+  includes?: any;
 }
 
 export interface ISnipForm {

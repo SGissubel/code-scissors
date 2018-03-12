@@ -39,12 +39,6 @@ export class AppComponent implements OnInit, AfterViewChecked {
         this.isAuth = authStatus;
         }
       );
-    this.router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-          return;
-      }
-      window.scrollTo(0, 0);
-    });
   }
 
   ngAfterViewChecked() {

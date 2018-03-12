@@ -58,22 +58,24 @@
       </mat-cell>
     </ng-container>
 
+    <!-- Private Column -->
     <ng-container matColumnDef="private">
       <mat-header-cell *matHeaderCellDef> Viewing </mat-header-cell>
       <mat-cell *matCellDef="let snippet"> {{ snippet.isprivate ? 'Set To Private' : 'Set to Public' }} </mat-cell>
     </ng-container>
 
+    <!-- View/Edit Column -->
     <ng-container matColumnDef="view">
       <mat-header-cell *matHeaderCellDef> View/Edit </mat-header-cell>
       <mat-cell *matCellDef="let snippet"> 
         <button mat-raised-button (click)="editSnippet(snippet)">View/Edit Snippet</button> 
         <button class="deleteBtn" style="margin-top: 10px" mat-raised-button (click)="removeSnippet(snippet)">Delete Snippet</button> 
-
       </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    
   </mat-table>
 </div>
 

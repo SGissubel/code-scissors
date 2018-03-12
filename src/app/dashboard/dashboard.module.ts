@@ -19,6 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SnippetsService } from './services/snippets.service';
 import { LanguagesService } from './user-snippets/snippet-edit/languages.service';
 import { SnippetDataService } from './services/snippet-data.service';
+import { TruncatePipe } from '../shared/truncate';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { SnippetDataService } from './services/snippet-data.service';
     SnippetEditComponent,
     SnippetTableComponent,
     UserSnippetComponent,
-    SnippetTableComponent
+    SnippetTableComponent,
+    TruncatePipe
   ],
   providers: [
     LanguagesService,

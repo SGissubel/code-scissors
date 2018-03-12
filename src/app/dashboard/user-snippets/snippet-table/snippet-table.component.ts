@@ -15,10 +15,10 @@ import { TruncatePipe } from '../../../shared/truncate';
 })
 export class SnippetTableComponent implements OnInit, OnDestroy {
   displayedColumns = ['name', 'language', 'other_tags', 'created_at', 'private', 'favorite', 'view'];
-  snippetsAll: ISnippet[];
+  snippetsAll: ISnippet[] = [];
   dataSource = new MatTableDataSource<ISnippet>();
   snippetSubscription: Subscription;
-  
+
   constructor(private snipService: SnippetsService,
               private snipDataService: SnippetDataService,
               private router: Router,
@@ -27,8 +27,9 @@ export class SnippetTableComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.snippetSubscription = this.snipService.snippetsAdded
       .subscribe(
-        (snippets: ISnippet[]) => {
+        (snippets: any) => {
           const [allSnippets] = snippets;
+
           this.snippetsAll = [];
           this.snippetsAll = allSnippets;
           this.dataSource.data = this.snippetsAll;
