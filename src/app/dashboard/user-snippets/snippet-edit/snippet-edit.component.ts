@@ -80,7 +80,6 @@ export class SnippetEditComponent implements OnInit {
   }
 
   oncodeTagsSubmit(snippet: ISnipForm) {
-    this.otherTags.push(snippet.value.language);
     const newSnip: ISnippet = {
       name: snippet.value.snippetname,
       other_tags: this.otherTags || null,
@@ -89,7 +88,17 @@ export class SnippetEditComponent implements OnInit {
       favorite: false,
       private: snippet.value.private || false
     };
-    this.snipService.createdNewSnippet(newSnip);
+    if (this.editMode) {
+      newSnip.id = this.currentSnippet.id;
+      if (this.currentSnippet.language !== snippet.value.language) {
+        newSnip.other_tags.push(snippet.value.language);  
+      }
+      this.snipService.updateSnippet(newSnip);
+    }
+    else {
+      newSnip.other_tags.push(snippet.value.language);
+      this.snipService.createdNewSnippet(newSnip);
+    }
   }
 
   private initCode() {
