@@ -24,6 +24,8 @@
               placeholder="Choose an Language"
               ngModel
               name="language"
+              [(ngModel)]="currentLanguage"
+
               (change)="handleSetLanguage($event)"
               required>
       				<mat-option *ngFor="let language of languages" [value]="language.value" name="language.value">
@@ -53,7 +55,7 @@
               (change)="onChangePrivacy()"
               #private>Make Snippet Private?
               <mat-hint *ngIf="privacySetting" id="privacy-hint_Private" class="privacy-hint">Set to Private</mat-hint>
-              <mat-hint *ngIf="!privacySetting" id="privacy-hint_Public" class="privacy-hint"><i>If you do not mark private, this code<br> will be viewable by all Code Scissor Members</i></mat-hint>
+              <mat-hint *ngIf="!privacySetting" id="privacy-hint_Public" class="privacy-hint"><i>If you do not mark private,<br> this code will be viewable<br> by all Code Scissor Members</i></mat-hint>
             </mat-checkbox>
             </span>
            <div class="row button-row">

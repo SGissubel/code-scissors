@@ -13,19 +13,20 @@ import { ISnippet, ISnipForm } from '../../models/snippets.model';
   templateUrl: './snippet-edit.component.html',
   styleUrls: ['./snippet-edit.component.scss']
 })
-export class SnippetEditComponent implements OnInit {
+export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy {
   addedNewInput = 0;
   code = '<p></p>';
   currentLanguage: string;
+  currentSnippet: any;
   editMode = false;
   editorOptions = { theme: 'vs-dark', language: 'html'};
   id: number;
   languages: Object[];
+  languageSet = false;
   otherTags: string[] = [];
   privacySetting = false;
   tag: string;
   snippetname: string;
-  currentSnippet: any;
   snipSubscription: Subscription;
 
   constructor(private langService: LanguagesService,
@@ -36,18 +37,14 @@ export class SnippetEditComponent implements OnInit {
   ngOnInit() {
     this.currentSnippet = this.snipDataService.getSnippet();
     if (this.currentSnippet) this.displaySnippet();
-    // this.snipDataService.snippet
-    //   .subscribe(
-    //     snippet => {
-    //       this.currentSnippet = snippet;
-    //       this.displaySnippet();
-    //     }
-    //   );
     this.languages = this.langService.getLanguages();
   }
 
   ngAfterViewChecked() {
-    if (this.currentSnippet) this.handleSetLanguage(this.currentSnippet.language);
+    if (this.currentSnippet && !this.languageSet) {
+      this.languageSet = true;
+      this.handleSetLanguage(this.currentLanguage);
+    }
   }
 
   displaySnippet() {
@@ -60,14 +57,23 @@ export class SnippetEditComponent implements OnInit {
   }
 
   handleSetLanguage(language) {
-    let curLanguage: string = '';
+    let curLanguage = '';
 
-    if (language.value) curLanguage = language.value;
-    else curLanguage = language;
-    window['monaco'].editor.setModelLanguage(
-      window['monaco'].editor
-      .getModels()[0], curLanguage
-    );
+    if (language.value) {
+      this.currentLanguage = language.value;
+      curLanguage = this.currentLanguage;
+    } else curLanguage = this.currentLanguage;
+
+    if (window['monaco']) {
+      try {
+        window['monaco'].editor.setModelLanguage(
+          window['monaco'].editor
+          .getModels()[0], curLanguage
+        );
+      } catch (error) {
+
+      }
+    }
   }
 
   addTag(tag: NgForm) {
@@ -91,11 +97,10 @@ export class SnippetEditComponent implements OnInit {
     if (this.editMode) {
       newSnip.id = this.currentSnippet.id;
       if (this.currentSnippet.language !== snippet.value.language) {
-        newSnip.other_tags.push(snippet.value.language);  
+        newSnip.other_tags.push(snippet.value.language);
       }
       this.snipService.updateSnippet(newSnip);
-    }
-    else {
+    } else {
       newSnip.other_tags.push(snippet.value.language);
       this.snipService.createdNewSnippet(newSnip);
     }
@@ -113,7 +118,6 @@ export class SnippetEditComponent implements OnInit {
       this.snippetname = this.currentSnippet.name;
       this.code = this.currentSnippet.code;
       this.privacySetting = this.currentSnippet.private;
-      
     }
 
   }

@@ -127,9 +127,9 @@ mat-checkbox {
 }
 
 @media (min-width: 531px) and (max-width: 750px) {
-    #checkBox {
-      bottom: -815px;
-    } 
+  #checkBox {
+    bottom: -815px;
+  } 
   .button-row {
     bottom: -850px;
     right: 0;
@@ -160,11 +160,30 @@ mat-checkbox {
     bottom: -850px; 
   }
 }
+
 @media (min-width: 992px) and (max-width: 1150px) {
   .button-row {
     bottom: -676px; 
   }
 }
+@media (min-width: 992px) and (max-width: 2300px) {
+  #checkBox {
+    bottom: -683px;
+  } 
+  .button-row {
+    bottom: -645px; 
+  }
+}
+
+@media (min-width: 2301px) {
+  #checkBox {
+    bottom: -717px;
+  } 
+  .button-row {
+    bottom: -685px; 
+  }
+}
+
 @media (max-width: 690px) {
 
   .mat-form-field-infix {

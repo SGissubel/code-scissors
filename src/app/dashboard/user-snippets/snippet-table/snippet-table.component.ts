@@ -12,7 +12,7 @@ import { ISnippet } from '../../models/snippets.model';
   templateUrl: './snippet-table.component.html',
   styleUrls: ['./snippet-table.component.scss']
 })
-export class SnippetTableComponent implements OnInit {
+export class SnippetTableComponent implements OnInit, OnDestroy {
   displayedColumns = ['name', 'language', 'other_tags', 'created_at', 'private', 'view'];
   snippetsAll: ISnippet[];
   dataSource = new MatTableDataSource<ISnippet>();
@@ -26,7 +26,7 @@ export class SnippetTableComponent implements OnInit {
     this.snippetSubscription = this.snipService.snippetsAdded
       .subscribe(
         (snippets: ISnippet[]) => {
-          let [allSnippets] = snippets;
+          const [allSnippets] = snippets;
           this.snippetsAll = [];
           this.snippetsAll = allSnippets;
           this.dataSource.data = this.snippetsAll;
