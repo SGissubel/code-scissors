@@ -40,18 +40,22 @@ export class SnippetsService {
       .snapshotChanges()
       .map(results => {
         return results.map((snippet) => {
-          this.snippetsAll.push(snippet.payload.doc.data());
-          if (snippet) this.snippetsExist.next(true);
+          return {
+            id: snippet.payload.doc.id,
+              name: snippet.payload.doc.data().name,
+              code: snippet.payload.doc.data().code,
+              other_tags: snippet.payload.doc.data().other_tags,
+              created_at: snippet.payload.doc.data().created_at,
+              language: snippet.payload.doc.data().language,
+              isprivate: snippet.payload.doc.data().private,
+              favorite: snippet.payload.doc.data().favorite
+            }
         });
       })
-      // .done(() => {
-      //   this.snippetsAdded.next(this.snippetsAll);    
-      // })
       .subscribe(result => {
-        this.snippetsAdded.next(this.snippetsAll);
-        for (const res of result) {
-          // console.log(res);
-        }
+        this.snippetsAll.push(result);
+        if (result) this.snippetsExist.next(true);
+        this.snippetsAdded.next(this.snippetsAll
       });
     
 

@@ -26,8 +26,9 @@ export class SnippetTableComponent implements OnInit {
     this.snippetSubscription = this.snipService.snippetsAdded
       .subscribe(
         (snippets: ISnippet[]) => {
+          let [allSnippets] = snippets;
           this.snippetsAll = [];
-          this.snippetsAll = snippets;
+          this.snippetsAll = allSnippets;
           this.dataSource.data = this.snippetsAll;
         }
       );
