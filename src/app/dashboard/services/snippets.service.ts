@@ -78,6 +78,7 @@ export class SnippetsService {
     const selectedSnip = snippet.id;
     this.db.doc<any>(`snippets/${this.userID}/user-snippets/${selectedSnip}`)
       .update(snippet);
+    this.returnToDash();
   }
 
   private storeNewSnippet(snippet: ISnippet) {
@@ -86,11 +87,15 @@ export class SnippetsService {
     const item = { ...snippet, id: itemId, created_at: createdAt};
     this.db.collection('snippets').doc(this.userID).collection('user-snippets').add(item);
     if (!snippet.private) this.storePublicSnippet(snippet);
-    else this.router.navigate(['dashboard']);
+    else this.returnToDash();
   }
 
   private storePublicSnippet(snippet: ISnippet) {
     this.db.collection('snippets').doc('public_snippets').collection('snippets').add(snippet);
+    this.returnToDash();
+  }
+
+  returnToDash() {
     this.router.navigate(['dashboard']);
   }
 

@@ -42,9 +42,13 @@ export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy
 
   ngAfterViewChecked() {
     if (this.currentSnippet && !this.languageSet) {
-      this.languageSet = true;
-      this.handleSetLanguage(this.currentLanguage);
+      this.checkForEditor();
     }
+  }
+
+  checkForEditor() {
+    this.languageSet = true;
+    this.handleSetLanguage(this.currentLanguage);
   }
 
   displaySnippet() {
@@ -58,6 +62,7 @@ export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy
 
   handleSetLanguage(language) {
     let curLanguage = '';
+    let editorNotPresent = false;
 
     if (language.value) {
       this.currentLanguage = language.value;
@@ -65,14 +70,23 @@ export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy
     } else curLanguage = this.currentLanguage;
 
     if (window['monaco']) {
-      try {
+      if (window['monaco'].editor.getModels()[0]) {
+        editorNotPresent = false;
         window['monaco'].editor.setModelLanguage(
           window['monaco'].editor
           .getModels()[0], curLanguage
         );
-      } catch (error) {
-
+      } else {
+        editorNotPresent = true;
       }
+    } else {
+      editorNotPresent = true;
+    }
+    if (editorNotPresent) {
+      setTimeout(() => {
+        this.languageSet = false;
+        this.checkForEditor();
+      }, 2000);
     }
   }
 
@@ -124,6 +138,7 @@ export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy
 
   ngOnDestroy() {
     this.editMode = false;
+    this.languageSet = false;
     this.currentSnippet = null;
     this.snipDataService.clear();
   }
