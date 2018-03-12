@@ -3,11 +3,20 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class SnippetDataService {
-  snippet = new Subject<any>();
+  // snippet = new Subject<any>();
+  snippet = {};
+
 
   constructor() {}
 
   passSnippet(snippet) {
-    this.snippet.next(snippet);
+    this.snippet = snippet;
+  }
+
+  getSnippet() {
+    return this.snippet;
+  }
+
+  clear() {
   }
 }

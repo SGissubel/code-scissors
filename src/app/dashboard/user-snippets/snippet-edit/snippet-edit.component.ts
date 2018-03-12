@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
@@ -34,16 +34,20 @@ export class SnippetEditComponent implements OnInit {
               private router: ActivatedRoute) { }
 
   ngOnInit() {
-    if (!this.currentSnippet) {
-        this.snipDataService.snippet
-          .subscribe(
-            snippet => {
-              this.currentSnippet = snippet;
-              this.displaySnippet();
-            }
-          );
-        }
+    this.currentSnippet = this.snipDataService.getSnippet();
+    if (this.currentSnippet) this.displaySnippet();
+    // this.snipDataService.snippet
+    //   .subscribe(
+    //     snippet => {
+    //       this.currentSnippet = snippet;
+    //       this.displaySnippet();
+    //     }
+    //   );
     this.languages = this.langService.getLanguages();
+  }
+
+  ngAfterViewChecked() {
+    if (this.currentSnippet) this.handleSetLanguage(this.currentSnippet.language);
   }
 
   displaySnippet() {
@@ -100,7 +104,7 @@ export class SnippetEditComponent implements OnInit {
       this.snippetname = this.currentSnippet.name;
       this.code = this.currentSnippet.code;
       this.privacySetting = this.currentSnippet.private;
-      // this.handleSetLanguage(this.currentSnippet.language);
+      
     }
     console.log(this.currentSnippet);
     console.log(this.currentLanguage);
