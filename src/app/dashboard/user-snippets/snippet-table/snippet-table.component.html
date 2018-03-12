@@ -25,8 +25,13 @@
     <ng-container matColumnDef="other_tags">
       <mat-header-cell *matHeaderCellDef> Tags </mat-header-cell>
       <mat-cell *matCellDef="let snippet">
-        <ng-container *ngFor="let tag of snippet.other_tags">
-          <span>{{ tag }}</span> <br>
+        <ng-container *ngFor="let tag of snippet.other_tags; let i=index">
+          <ng-container *ngIf="i < 2">
+            <span>{{ tag }}</span> <br>
+          </ng-container>
+          <ng-container *ngIf="i === 2">
+            <span>...</span> <br>
+          </ng-container>
         </ng-container>
       </mat-cell>
     </ng-container>
@@ -38,7 +43,7 @@
     </ng-container>
 
     <!-- Favorite Column -->
-    <!-- <ng-container matColumnDef="favorite">
+    <ng-container matColumnDef="favorite">
       <mat-header-cell *matHeaderCellDef> Favorited </mat-header-cell>
       <mat-cell *matCellDef="let snippet"> 
         <span *ngIf="!snippet.favorite">
@@ -47,20 +52,24 @@
         <span *ngIf="snippet.favorite">
           <i class="material-icons">thumb_up</i>
           <span>
-            <a (click)="addToFavorite(snippet)">Remove From Favorites</a>
+            <a style="color: red" (click)="addToFavorite(snippet)">Remove From Favorites</a>
           </span>   
         </span>
       </mat-cell>
-    </ng-container> -->
+    </ng-container>
 
     <ng-container matColumnDef="private">
       <mat-header-cell *matHeaderCellDef> Viewing </mat-header-cell>
-      <mat-cell *matCellDef="let snippet"> {{ snippet.private ? 'Set To Private' : 'Set to Public' }} </mat-cell>
+      <mat-cell *matCellDef="let snippet"> {{ snippet.isprivate ? 'Set To Private' : 'Set to Public' }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="view">
       <mat-header-cell *matHeaderCellDef> View/Edit </mat-header-cell>
-      <mat-cell *matCellDef="let snippet"> <button mat-raised-button (click)="editSnippet(snippet)">View/Edit Snippet</button> </mat-cell>
+      <mat-cell *matCellDef="let snippet"> 
+        <button mat-raised-button (click)="editSnippet(snippet)">View/Edit Snippet</button> 
+        <button class="deleteBtn" style="margin-top: 10px" mat-raised-button (click)="removeSnippet(snippet)">Delete Snippet</button> 
+
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

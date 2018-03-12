@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { SnippetsService } from '../../services/snippets.service';
 import { SnippetDataService } from '../../services/snippet-data.service';
 import { ISnippet } from '../../models/snippets.model';
+import { TruncatePipe } from '../../../shared/truncate';
 
 @Component({
   selector: 'app-snippet-table',
@@ -13,10 +14,11 @@ import { ISnippet } from '../../models/snippets.model';
   styleUrls: ['./snippet-table.component.scss']
 })
 export class SnippetTableComponent implements OnInit, OnDestroy {
-  displayedColumns = ['name', 'language', 'other_tags', 'created_at', 'private', 'view'];
+  displayedColumns = ['name', 'language', 'other_tags', 'created_at', 'private', 'favorite', 'view'];
   snippetsAll: ISnippet[];
   dataSource = new MatTableDataSource<ISnippet>();
   snippetSubscription: Subscription;
+  
   constructor(private snipService: SnippetsService,
               private snipDataService: SnippetDataService,
               private router: Router,
@@ -45,6 +47,10 @@ export class SnippetTableComponent implements OnInit, OnDestroy {
   editSnippet(snippet) {
     this.snipDataService.passSnippet(snippet);
     this.router.navigate(['edit'], { relativeTo: this.route });
+  }
+
+  removeSnippet(snippet) {
+    this.snipService.deleteSnippet(snippet);
   }
 
   addToFavorite(snippet: ISnippet) {

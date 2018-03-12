@@ -57,21 +57,6 @@ export class SnippetsService {
         if (result) this.snippetsExist.next(true);
         this.snippetsAdded.next(this.snippetsAll);
       });
-
-
-
-     // the code below is working (just not what I need -- the above code will fetch me the specific id for accessing each stored "snippet")
-    // this.db
-    //   .collection('snippets')
-    //   .doc(this.userID)
-    //   .collection('user-snippets')
-    //   .valueChanges()
-    //   .subscribe((snippets: ISnippet[]) => {
-    //     this.snippetsAdded.next(snippets);
-    //     if (snippets.length) this.snippetsExist.next(true);
-    //   }, error => {
-    //     // console.log(error);
-    //   });
   }
 
   updateSnippet(snippet: ISnippet) {
@@ -81,11 +66,30 @@ export class SnippetsService {
     this.returnToDash();
   }
 
+  deleteSnippet(snippet: ISnippet) {
+    const that = this;
+    this.db.collection('snippets')
+      .doc(this.userID)
+      .collection('user-snippets')
+      .doc(snippet.id)
+      .delete().then(function() {
+        that.fetchCreatedSnippets();
+        console.log("Document successfully deleted!");
+      }).catch(function(error) {
+        console.error("Error removing document: ", error);
+      });
+  }
+
   private storeNewSnippet(snippet: ISnippet) {
     const itemId = this.db.createId();
     const createdAt = firebase.firestore.FieldValue.serverTimestamp();
     const item = { ...snippet, id: itemId, created_at: createdAt};
-    this.db.collection('snippets').doc(this.userID).collection('user-snippets').add(item);
+    
+    this.db.collection('snippets')
+      .doc(this.userID)
+      .collection('user-snippets')
+      .add(item);
+
     if (!snippet.private) this.storePublicSnippet(snippet);
     else this.returnToDash();
   }
