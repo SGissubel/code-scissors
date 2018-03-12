@@ -12,8 +12,9 @@ import { AuthService } from '../../login/auth.service';
 
 @Injectable()
 export class SnippetsService {
-  snippetsAdded = new Subject<ISnippet[]>();
+  snippetsAdded = new Subject<any[]>();
   snippetsExist = new Subject<boolean>();
+  snippetsAll: any[] = [];
   garbage: Observable<any[]>;
   userID: string;
 
@@ -31,23 +32,28 @@ export class SnippetsService {
   }
 
   fetchCreatedSnippets() {
-
+    this.snippetsAll = [];
     this.db
       .collection('snippets')
       .doc(this.userID)
       .collection('user-snippets')
       .snapshotChanges()
       .map(results => {
-        return results.map((doc) => {
-          console.log(doc)
+        return results.map((snippet) => {
+          this.snippetsAll.push(snippet.payload.doc.data());
+          if (snippet) this.snippetsExist.next(true);
         });
+      })
+      // .done(() => {
+      //   this.snippetsAdded.next(this.snippetsAll);    
+      // })
+      .subscribe(result => {
+        this.snippetsAdded.next(this.snippetsAll);
+        for (const res of result) {
+          // console.log(res);
+        }
       });
-      //this code below - I assume - I would need to subscribe to recieve all newly created items
-      // .subscribe(result => {
-      //   for (const res of result) {
-      //     console.log(res.payload.doc.data());
-      //   }
-      // });
+    
 
 
 

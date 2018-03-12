@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
 
 import { SnippetsService } from '../../services/snippets.service';
 import { LanguagesService } from './languages.service';
+import { SnippetDataService } from '../../services/snippet-data.service';
 import { ISnippet, ISnipForm } from '../../models/snippets.model';
 
 @Component({
@@ -23,12 +26,29 @@ export class SnippetEditComponent implements OnInit {
   tag: string;
   snippetname: string;
   currentSnippet: any;
+  snipSubscription: Subscription;
 
   constructor(private langService: LanguagesService,
-              private snipService: SnippetsService) { }
+              private snipService: SnippetsService,
+              private snipDataService: SnippetDataService,
+              private router: ActivatedRoute) { }
 
   ngOnInit() {
+    if (!this.currentSnippet) {
+        this.snipDataService.snippet
+          .subscribe(
+            snippet => {
+              this.currentSnippet = snippet;
+              this.displaySnippet();
+            }
+          );
+        }
     this.languages = this.langService.getLanguages();
+  }
+
+  displaySnippet() {
+    this.editMode = true;
+    this.initCode();
   }
 
   onChangePrivacy() {
@@ -36,9 +56,13 @@ export class SnippetEditComponent implements OnInit {
   }
 
   handleSetLanguage(language) {
+    let curLanguage: string = '';
+
+    if (typeof (language === "string")) curLanguage = language;
+    else curLanguage = language.value;
     window['monaco'].editor.setModelLanguage(
       window['monaco'].editor
-      .getModels()[0], language.value
+      .getModels()[0], curLanguage
     );
   }
 
@@ -72,13 +96,23 @@ export class SnippetEditComponent implements OnInit {
 
     if (this.editMode) {
       this.currentLanguage = this.currentSnippet.language;
-      this.otherTags = this.currentSnippet.otherTags;
+      this.otherTags = this.currentSnippet.other_tags;
       this.snippetname = this.currentSnippet.name;
       this.code = this.currentSnippet.code;
       this.privacySetting = this.currentSnippet.private;
-      this.handleSetLanguage(this.currentSnippet.language);
+      // this.handleSetLanguage(this.currentSnippet.language);
     }
+    console.log(this.currentSnippet);
+    console.log(this.currentLanguage);
+    console.log(this.otherTags);
+    console.log(this.snippetname);
+    console.log(this.code);
 
+  }
+
+  ngOnDestroy() {
+    this.editMode = false;
+    // this.snipSubscription.unsubscribe();
   }
 
 }

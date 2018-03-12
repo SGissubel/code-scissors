@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
 import { SnippetsService } from '../../services/snippets.service';
+import { SnippetDataService } from '../../services/snippet-data.service';
 import { ISnippet } from '../../models/snippets.model';
 
 @Component({
@@ -11,16 +13,20 @@ import { ISnippet } from '../../models/snippets.model';
   styleUrls: ['./snippet-table.component.scss']
 })
 export class SnippetTableComponent implements OnInit {
-  displayedColumns = ['name', 'language', 'other_tags', 'created_at', 'private'];
+  displayedColumns = ['name', 'language', 'other_tags', 'created_at', 'private', 'view'];
   snippetsAll: ISnippet[];
   dataSource = new MatTableDataSource<ISnippet>();
   snippetSubscription: Subscription;
-  constructor(private snipService: SnippetsService) {}
+  constructor(private snipService: SnippetsService,
+              private snipDataService: SnippetDataService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.snippetSubscription = this.snipService.snippetsAdded
       .subscribe(
         (snippets: ISnippet[]) => {
+          this.snippetsAll = [];
           this.snippetsAll = snippets;
           this.dataSource.data = this.snippetsAll;
         }
@@ -33,6 +39,11 @@ export class SnippetTableComponent implements OnInit {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  editSnippet(snippet) {
+    this.snipDataService.passSnippet(snippet);
+    this.router.navigate(['edit'], { relativeTo: this.route });
   }
 
   addToFavorite(snippet: ISnippet) {

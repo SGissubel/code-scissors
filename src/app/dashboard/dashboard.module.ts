@@ -18,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SnippetsService } from './services/snippets.service';
 import { LanguagesService } from './user-snippets/snippet-edit/languages.service';
+import { SnippetDataService } from './services/snippet-data.service';
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { LanguagesService } from './user-snippets/snippet-edit/languages.service
   providers: [
     LanguagesService,
     SnippetsService,
+    SnippetDataService
   ]
 })
 export class DashboardModule {

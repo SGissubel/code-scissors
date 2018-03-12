@@ -58,6 +58,11 @@
       <mat-cell *matCellDef="let snippet"> {{ snippet.private ? 'Set To Private' : 'Set to Public' }} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="view">
+      <mat-header-cell *matHeaderCellDef> View/Edit </mat-header-cell>
+      <mat-cell *matCellDef="let snippet"> <button mat-raised-button (click)="editSnippet(snippet)">View/Edit Snippet</button> </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
