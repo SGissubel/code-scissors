@@ -8,6 +8,7 @@
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
     "experimentalDecorators": true,
     "allowJs": true,
     "target": "es5",
