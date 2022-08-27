@@ -24,6 +24,8 @@
     "@angular/platform-browser": "^13.3.11",
     "@angular/platform-browser-dynamic": "^13.3.11",
     "@angular/router": "^13.3.11",
+    "@covalent/code-editor": "^4.5.0",
+    "@covalent/highlight": "^4.5.0",
     "chart.js": "^2.5.0",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
@@ -31,16 +33,24 @@
     "jquery": "^3.3.1",
     "moment": "^2.21.0",
     "ngx-monaco-editor": "^3.0.2",
-    "rxjs": "^6.6.7",
+    "rxjs": "^7.5.6",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.9",
+    "@angular-eslint/builder": "13.5.0",
+    "@angular-eslint/eslint-plugin": "13.5.0",
+    "@angular-eslint/eslint-plugin-template": "13.5.0",
+    "@angular-eslint/schematics": "13.5.0",
+    "@angular-eslint/template-parser": "13.5.0",
     "@angular/cli": "13.3.9",
     "@angular/compiler-cli": "^13.3.11",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "5.27.1",
+    "@typescript-eslint/parser": "5.27.1",
+    "eslint": "^8.17.0",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -48,7 +58,6 @@
     "karma-jasmine": "~4.0.2",
     "karma-jasmine-html-reporter": "^1.7.0",
     "ts-node": "~4.1.0",
-    "tslint": "~6.1.0",
     "typescript": "~4.6.4"
   }
 }

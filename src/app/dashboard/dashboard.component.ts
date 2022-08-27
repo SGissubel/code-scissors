@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit {
   user: string;
   snippets: any[];
 
@@ -21,9 +21,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
         document.body.scrollTop = 0;
       }, 250);
     });
-  }
-
-  ngOnDestroy() {
   }
 
 }
