@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
+// import { MonacoEditorModule } from 'ngx-monaco-editor';
 // import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFirestoreModule } from 'angularfire2/firestore';
+// import { AngularFireStorageModule } from 'angularfire2/storage';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 // components
@@ -50,11 +50,11 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
   ],
   imports: [
     BrowserModule,
-    MonacoEditorModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase, 'code-scissors'),
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireAuthModule,
+    // MonacoEditorModule.forRoot(),
+    // AngularFireModule.initializeApp(environment.firebase, 'code-scissors'),
+    // AngularFirestoreModule,
+    // AngularFireStorageModule,
+    // AngularFireAuthModule,
     FormsModule,
     // FlexLayoutModule,
     HttpClientModule,
