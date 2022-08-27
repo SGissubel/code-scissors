@@ -5,7 +5,8 @@
         <form
           fxLayout="column"
           #codeTags="ngForm"
-          (ngSubmit)="oncodeTagsSubmit(codeTags)">
+          (ngSubmit)="oncodeTagsSubmit(codeTags)"
+        >
           <mat-form-field>
             <input
               type="text" 
@@ -16,7 +17,8 @@
               snippetname
               [(ngModel)]="snippetname"
               value="snippetname"
-              required>
+              required
+            >
           </mat-form-field>
           <mat-form-field >
           	<mat-select 
@@ -25,9 +27,9 @@
               ngModel
               name="language"
               [(ngModel)]="currentLanguage"
-
               (change)="handleSetLanguage($event)"
-              required>
+              required
+            >
       				<mat-option *ngFor="let language of languages" [value]="language.value" name="language.value">
       					{{ language.name }}
       				</mat-option>
@@ -35,14 +37,15 @@
           </mat-form-field>
           <mat-form-field>
             <input
-            style="width: 268px"
+              style="width: 268px"
             	name="tag"
             	type="text"
               matInput
               placeholder="Add Addition Tags"
               ngModel
               tag
-              #tag="ngModel">
+              #tag
+            >
               <a (click)="addTag(tag)"><i class="material-icons">add_circle</i></a>
           </mat-form-field>
           <span></span>
@@ -53,9 +56,27 @@
               name="private"
               private
               (change)="onChangePrivacy()"
-              #private>Make Snippet Private?
-              <mat-hint *ngIf="privacySetting" id="privacy-hint_Private" class="privacy-hint">Set to Private</mat-hint>
-              <mat-hint *ngIf="!privacySetting" id="privacy-hint_Public" class="privacy-hint"><i>If you do not mark private,<br> this code will be viewable<br> by all Code Scissor Members</i></mat-hint>
+              #private
+            >
+              Make Snippet Private?
+
+              <mat-hint
+                *ngIf="privacySetting"
+                id="privacy-hint_Private"
+                class="privacy-hint"
+              >
+                Set to Private
+              </mat-hint>
+              <mat-hint
+                *ngIf="!privacySetting"
+                id="privacy-hint_Public"
+                class="privacy-hint"
+              >
+                <i>If you do not mark private,
+                  <br> this code will be viewable <br>
+                  by all Code Scissor Members
+                </i>
+              </mat-hint>
             </mat-checkbox>
             </span>
            <div class="row button-row">
@@ -85,9 +106,10 @@
 
 
   <span class="editor-words"> Enter Your Code Snippet Below:*</span>
-  <ngx-monaco-editor
+  <!-- <ngx-monaco-editor
     id="monaco-editor" 
   	[options]="editorOptions" 
-  	[(ngModel)]="code"></ngx-monaco-editor>
+  	[(ngModel)]="code"
+  ></ngx-monaco-editor> -->
   	
 </div>

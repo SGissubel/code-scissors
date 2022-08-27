@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
 
 import { SnippetsService } from '../../services/snippets.service';
 import { LanguagesService } from './languages.service';
 import { SnippetDataService } from '../../services/snippet-data.service';
 import { ISnippet, ISnipForm } from '../../models/snippets.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-snippet-edit',
@@ -21,7 +20,7 @@ export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy
   editMode = false;
   editorOptions = { theme: 'vs-dark', language: 'html'};
   id: number;
-  languages: Object[];
+  languages: any;
   languageSet = false;
   otherTags: string[] = [];
   privacySetting = false;
@@ -29,10 +28,11 @@ export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy
   snippetname: string;
   snipSubscription: Subscription;
 
-  constructor(private langService: LanguagesService,
-              private snipService: SnippetsService,
-              private snipDataService: SnippetDataService,
-              private router: ActivatedRoute) { }
+  constructor(
+    private langService: LanguagesService,
+    private snipService: SnippetsService,
+    private snipDataService: SnippetDataService,
+  ) { }
 
   ngOnInit() {
     this.currentSnippet = this.snipDataService.getSnippet();
@@ -90,7 +90,7 @@ export class SnippetEditComponent implements OnInit, AfterViewChecked, OnDestroy
     }
   }
 
-  addTag(tag: NgForm) {
+  addTag(tag: any) {
     this.otherTags.push(tag.value);
 
   }

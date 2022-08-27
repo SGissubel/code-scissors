@@ -1,9 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-
+import { Subscription } from 'rxjs';
 import { SnippetsService } from '../services/snippets.service';
-import { ISnippet } from '../models/snippets.model';
 
 @Component({
   selector: 'app-dashboard-home',

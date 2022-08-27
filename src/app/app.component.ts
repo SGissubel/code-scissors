@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
-import { AngularFirestore } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+// import { AngularFirestore } from 'angularfire2/firestore';
+
 import { FooterService } from './home-page/footer.service';
 
 import { AuthService } from './login/auth.service';

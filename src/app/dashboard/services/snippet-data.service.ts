@@ -1,9 +1,7 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class SnippetDataService {
-  // snippet = new Subject<any>();
   snippet = {};
 
 
