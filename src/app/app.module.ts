@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HttpClientModule } from '@angular/common/http';
+// import { MonacoEditorModule } from 'ngx-monaco-editor';
+// import { MDBBootstrapModule } from 'angular-bootstrap-md';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFirestoreModule } from 'angularfire2/firestore';
+// import { AngularFireStorageModule } from 'angularfire2/storage';
+// import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 // components
@@ -23,7 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 
 // directives / services / pipes
@@ -50,20 +50,20 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
   ],
   imports: [
     BrowserModule,
-    MonacoEditorModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebase, 'code-scissors'),
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireAuthModule,
+    // MonacoEditorModule.forRoot(),
+    // AngularFireModule.initializeApp(environment.firebase, 'code-scissors'),
+    // AngularFirestoreModule,
+    // AngularFireStorageModule,
+    // AngularFireAuthModule,
     FormsModule,
-    HttpModule,
+    // FlexLayoutModule,
+    HttpClientModule,
     AppRoutingModule,
     DashboardModule,
     MaterialModule,
-    MDBBootstrapModule.forRoot(),
+    // MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
-    FlexLayoutModule
-    ],
+  ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [AuthService, UIService, FooterService],
   bootstrap: [AppComponent]

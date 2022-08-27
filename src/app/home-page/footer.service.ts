@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class FooterService {

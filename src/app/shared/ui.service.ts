@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Injectable()
 export class UIService {
@@ -9,8 +9,8 @@ export class UIService {
 
   showSnackbar(message, action, duration) {
     this.snackBar.open(message, action, {
-          duration: duration
-        });
+      duration: duration
+    });
   }
 
 }

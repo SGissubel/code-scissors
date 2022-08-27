@@ -1,12 +1,11 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatTableDataSource } from '@angular/material';
-import { Subscription } from 'rxjs/Subscription';
+import { MatTableDataSource } from '@angular/material/table';
+import { Subscription } from 'rxjs';
 
 import { SnippetsService } from '../../services/snippets.service';
 import { SnippetDataService } from '../../services/snippet-data.service';
 import { ISnippet } from '../../models/snippets.model';
-import { TruncatePipe } from '../../../shared/truncate';
 
 @Component({
   selector: 'app-snippet-table',
@@ -14,15 +13,19 @@ import { TruncatePipe } from '../../../shared/truncate';
   styleUrls: ['./snippet-table.component.scss']
 })
 export class SnippetTableComponent implements OnInit, OnDestroy {
-  displayedColumns = ['name', 'language', 'other_tags', 'created_at', 'private', 'favorite', 'view'];
+  displayedColumns = [
+    'name', 'language', 'other_tags', 'created_at', 'private', 'favorite', 'view'
+  ];
   snippetsAll: ISnippet[] = [];
   dataSource = new MatTableDataSource<ISnippet>();
   snippetSubscription: Subscription;
 
-  constructor(private snipService: SnippetsService,
-              private snipDataService: SnippetDataService,
-              private router: Router,
-              private route: ActivatedRoute) { }
+  constructor(
+    private snipService: SnippetsService,
+    private snipDataService: SnippetDataService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.snippetSubscription = this.snipService.snippetsAdded
@@ -39,18 +42,18 @@ export class SnippetTableComponent implements OnInit, OnDestroy {
     this.snipService.fetchAvailableSnippets();
   }
 
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase();
+  applyFilter(filterValue: any) {
+    filterValue = filterValue.value.trim();
+    filterValue = filterValue.value.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 
-  editSnippet(snippet) {
+  editSnippet(snippet: ISnippet) {
     this.snipDataService.passSnippet(snippet);
     this.router.navigate(['edit'], { relativeTo: this.route });
   }
 
-  removeSnippet(snippet) {
+  removeSnippet(snippet: ISnippet) {
     this.snipService.deleteSnippet(snippet);
   }
 
