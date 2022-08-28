@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
+@Injectable({
+  providedIn: 'root'
+})
 @Injectable()
 export class FooterService {
-  isNotOnHomePage = new Subject<boolean>();
+  isNotOnHomePage$ = new BehaviorSubject<boolean>(false);
 
   constructor(private route: ActivatedRoute,
     private router: Router) {}
@@ -16,10 +19,14 @@ export class FooterService {
       || this.router.url.indexOf('new') !== -1;
 
     if (isNotOnHomePage) {
-      this.isNotOnHomePage.next(true);
+      this.isNotOnHomePage$.next(true);
     } else {
-      this.isNotOnHomePage.next(false);
+      this.isNotOnHomePage$.next(false);
     }
+  }
+
+  getIsNotOnHomePage() {
+    return this.isNotOnHomePage$.asObservable();
   }
 
 }

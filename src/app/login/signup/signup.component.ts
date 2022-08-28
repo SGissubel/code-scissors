@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { PopUpMessageService } from 'src/app/shared/pop-up-message.service';
+
 import { FooterService } from '../../home-page/footer.service';
 import { AuthService } from '../auth.service';
 
@@ -14,10 +15,11 @@ import { AuthService } from '../auth.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private authService: AuthService,
-              private footerService: FooterService) { }
+  constructor(
+    private authService: AuthService,
+    private footerService: FooterService,
+    private popUpMessageService: PopUpMessageService
+  ) { }
 
   ngOnInit() {
     this.footerService.homePageCheck();
@@ -28,10 +30,12 @@ export class SignupComponent implements OnInit {
       email: signUpForm.value.email,
       password: signUpForm.value.password
     };
-    this.authService.registerUser(emailPass);
+    this.authService.registerUser(emailPass)
+      .then(_ => {})
+      .catch(error => {
+        this.popUpMessageService.showSnackbar(error.message, null, 3000);
+      });
   }
-
-
 
 }
 

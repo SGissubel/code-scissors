@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-// import { MonacoEditorModule } from 'ngx-monaco-editor';
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 // import { MDBBootstrapModule } from 'angular-bootstrap-md';
 // import { AngularFireModule } from 'angularfire2';
 // import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -23,14 +25,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
-import { AuthService } from './login/auth.service';
-import { UIService } from './shared/ui.service';
-import { FooterService } from './home-page/footer.service';
 import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.component';
 
 
@@ -50,13 +49,15 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
   ],
   imports: [
     BrowserModule,
-    // MonacoEditorModule.forRoot(),
+    MonacoEditorModule.forRoot(),
+    provideFirebaseApp(() => initializeApp(environment.firebase, 'code-scissors')),
+    provideFirestore(() => getFirestore()),
     // AngularFireModule.initializeApp(environment.firebase, 'code-scissors'),
     // AngularFirestoreModule,
     // AngularFireStorageModule,
     // AngularFireAuthModule,
     FormsModule,
-    // FlexLayoutModule,
+    FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
     DashboardModule,
@@ -65,7 +66,7 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
     BrowserAnimationsModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [AuthService, UIService, FooterService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

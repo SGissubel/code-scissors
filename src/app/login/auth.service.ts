@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { Auth } from '@angular/fire/auth';
+// import { store }
 // import { AngularFireAuth } from 'angularfire2/auth';
 // import { AngularFirestore } from 'angularfire2/firestore';
-import { UIService } from '../shared/ui.service';
+import { PopUpMessageService } from '../shared/pop-up-message.service';
 
 import { IUser } from '../dashboard/models/user.model';
 import { IAuthData } from '../dashboard/models/user.model';
 import { Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
   isLoggedIn = new Subject<boolean>();
   error = new Subject<any>();
@@ -19,13 +22,15 @@ export class AuthService {
 
   constructor(
     private router: Router,
+    private angularFireAuth: Auth,
     // private afAuth: AngularFireAuth,
     // private db: AngularFirestore,
-    private uiService: UIService
+    private popUpMessage: PopUpMessageService
   ) { }
 
   initAuthListener() {
-    // this.afAuth.authState.subscribe(user => {
+    this.angularFireAuth.onAuthStateChanged
+    // this.angularFireAuth.authState.subscribe(user => {
     //   if (user) {
     //     this.userID = user.uid;
     //     this.isAuthenticated = true;
@@ -51,7 +56,7 @@ export class AuthService {
 
     // })
     //   .catch(error => {
-    //     this.uiService.showSnackbar(error.message, null, 3000);
+    //     this.popUpMessage.showSnackbar(error.message, null, 3000);
     //   });
   }
 
@@ -63,7 +68,7 @@ export class AuthService {
 
     // })
     //   .catch(error => {
-    //     this.uiService.showSnackbar(error.message, null, 3000);
+    //     this.popUpMessage.showSnackbar(error.message, null, 3000);
     //   });
   }
 
