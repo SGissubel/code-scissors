@@ -37,7 +37,8 @@
     "ngx-monaco-editor": "^6.0.0",
     "rxjs": "^7.5.6",
     "tslib": "^2.0.0",
-    "zone.js": "~0.11.8"
+    "zone.js": "~0.11.8",
+    "rxfire": "^6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.9",

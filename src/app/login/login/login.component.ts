@@ -25,11 +25,11 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit(form: NgForm) {
-    this.authService.userSignin(form.value)
-      .then(_ => {})
-      .catch(error => {
-          this.popUpMessageService.showSnackbar(error.message, null, 3000);
-      });
+    // this.authService.userSignin(form.value)
+    //   .then(_ => {})
+    //   .catch(error => {
+    //       this.popUpMessageService.showSnackbar(error.message, null, 3000);
+    //   });
   }
 
 }

@@ -1,30 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { isDevMode, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-import { getStorage, provideStorage } from '@angular/fire/storage';
-import { getAuth, provideAuth } from '@angular/fire/auth';
+
 import {
-  provideFirebaseApp,
-  getApp,
-  initializeApp
-} from '@angular/fire/app';
-import {
-  connectFirestoreEmulator,
-  enableIndexedDbPersistence,
-  getFirestore,
-  provideFirestore
-} from '@angular/fire/firestore';
-import { MonacoEditorModule } from 'ngx-monaco-editor';
-// import { MDBBootstrapModule } from 'angular-bootstrap-md';
-// import { AngularFireModule } from 'angularfire2';
-// import { AngularFirestoreModule } from 'angularfire2/firestore';
-// import { AngularFireStorageModule } from 'angularfire2/storage';
-// import { AngularFireAuthModule } from 'angularfire2/auth';
+  AngularFireAnalyticsModule,
+  APP_NAME,
+  APP_VERSION,
+  DEBUG_MODE as ANALYTICS_DEBUG_MODE,
+  ScreenTrackingService,
+  UserTrackingService,
+  COLLECTION_ENABLED
+} from '@angular/fire/compat/analytics';
+
+import { AngularFireDatabaseModule, USE_EMULATOR as USE_DATABASE_EMULATOR } from '@angular/fire/compat/database';
+import { AngularFirestoreModule, USE_EMULATOR as USE_FIRESTORE_EMULATOR, SETTINGS as FIRESTORE_SETTINGS } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule, USE_EMULATOR as USE_STORAGE_EMULATOR } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule, USE_DEVICE_LANGUAGE, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
+import { AngularFireMessagingModule, SERVICE_WORKER, VAPID_KEY } from '@angular/fire/compat/messaging';
+import { AngularFireFunctionsModule, USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/compat/functions';
+import { AngularFireRemoteConfigModule, SETTINGS as REMOTE_CONFIG_SETTINGS, DEFAULTS as REMOTE_CONFIG_DEFAULTS } from '@angular/fire/compat/remote-config';
+import { AngularFirePerformanceModule, PerformanceMonitoringService } from '@angular/fire/compat/performance';
+import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+
 import { environment } from '../environments/environment';
 
 // components
@@ -63,15 +64,19 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
     FooterHomeComponent,
   ],
   imports: [
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig, 'code-scissors')),
-    // AngularFireModule.initializeApp(environment.firebaseConfig, 'code-scissors'),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
+    AngularFireAuthModule,
+    AngularFireAuthGuardModule,
+    AngularFireRemoteConfigModule,
+    AngularFireMessagingModule,
     AngularFireAnalyticsModule,
-    AngularFirestoreModule,
-    provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth()),
-    provideStorage(() => getStorage()),
+    AngularFireFunctionsModule,
+    AngularFirePerformanceModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     BrowserModule,
-    MonacoEditorModule.forRoot(),
     FormsModule,
     FlexLayoutModule,
     HttpClientModule,
@@ -82,7 +87,10 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
-    AngularFireDatabase
+    UserTrackingService,
+    ScreenTrackingService,
+    PerformanceMonitoringService,
+    { provide: FIRESTORE_SETTINGS, useValue: { ignoreUndefinedProperties: true } },
   ],
   bootstrap: [AppComponent]
 })

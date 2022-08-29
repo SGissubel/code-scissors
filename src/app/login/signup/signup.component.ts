@@ -30,11 +30,11 @@ export class SignupComponent implements OnInit {
       email: signUpForm.value.email,
       password: signUpForm.value.password
     };
-    this.authService.registerUser(emailPass)
-      .then(_ => {})
-      .catch(error => {
-        this.popUpMessageService.showSnackbar(error.message, null, 3000);
-      });
+    // this.authService.registerUser(emailPass)
+    //   .then(_ => {})
+    //   .catch(error => {
+    //     this.popUpMessageService.showSnackbar(error.message, null, 3000);
+    //   });
   }
 
 }

@@ -21,7 +21,7 @@ export class SnippetsService {
     private router: Router,
     private authService: AuthService
   ) {
-    this.userID = this.authService.getUserID();
+    // this.userID = this.authService.getUserID();
   }
 
   fetchAvailableSnippets() {
