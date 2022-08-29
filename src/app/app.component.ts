@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   ) { }
 
   ngOnInit() {
-    this.authService.initAuthListener();
+    // this.authService.initAuthListener();
 
     this.footServ.getIsNotOnHomePage()
       .subscribe({
@@ -31,13 +31,13 @@ export class AppComponent implements OnInit, AfterViewChecked {
         error: (err) => console.log(err)
       });
 
-    this.authService.isLoggedIn
-      .subscribe({
-        next: (authStatus: boolean) => {
-          this.isAuth = authStatus;
-        },
-        error: (err) => console.log(err)
-      });
+    // this.authService.isLoggedIn
+    //   .subscribe({
+    //     next: (authStatus: boolean) => {
+    //       this.isAuth = authStatus;
+    //     },
+    //     error: (err) => console.log(err)
+    //   });
   }
 
   ngAfterViewChecked() {

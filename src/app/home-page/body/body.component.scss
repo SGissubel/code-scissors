@@ -1,33 +1,35 @@
-.homeBodyContainer {
+.home-body-container {
   position: relative;
   overflow: -webkit-paged-x;
 }
 
-.iconRow {
+.icon-row {
   margin-top: 4em;
   display: flex;
   margin-bottom: 8em;
-  .headText {
+  .header-text {
     font-weight: 500;
     letter-spacing: 1px;
   }
 }
 
-.iconParentDiv { 
+.icon-parent-div { 
   width: 300px;
   margin: 0 auto;
 }
 
-.iconDiv {
+.icon-div {
   position: relative;
   min-height: 140px;
 }
 
-#leftIcon .iconParentDiv {
-  margin-left: 30%;
+#leftIcon {
+  .icon-parent-div {
+    margin-left: 30%;
+  }
 }
 
-.iconDivCenter {
+.icon-div-center {
   position: relative;
   top: -13px;
 }
@@ -42,42 +44,50 @@
   bottom: 4px;
 }
 
-#rightIcon .iconParentDiv {
-  margin-right: 30%;
+#rightIcon {
+  .icon-parent-div {
+    margin-right: 30%;
+  }
 }
 
 @media (max-width: 768px) {
-  .iconParentDiv {
+  .icon-parent-div {
     margin: 0 auto 61px !important;
   }
 }
 
 @media (min-width: 768px) and (max-width: 890px) {
 
-  #leftIcon .iconParentDiv {
-    margin-left: 13px;
+  #leftIcon {
+    .icon-parent-div {
+      margin-left: 13px;
+    }
   }
 
-  .iconParentDiv {
+  .icon-parent-div {
     width: 216px;
     margin: 0 auto;
   }
 }
 
 @media (min-width: 891px) and (max-width: 995px) {
-  .iconParentDiv {
+  .icon-parent-div {
     width: 269px;
     margin: 0 auto;
   }
 
-  #leftIcon .iconParentDiv {
-    margin-left: 5%;
+  #leftIcon {
+    .icon-parent-div {
+      margin-left: 5%;
+    }
   }
 }
 
 @media (min-width: 995px) and (max-width: 1180px) {
-  #leftIcon .iconParentDiv {
-    margin-left: 18%;
+  #leftIcon {
+    .icon-parent-div {
+      margin-left: 18%;
+    }
   }
 }
 

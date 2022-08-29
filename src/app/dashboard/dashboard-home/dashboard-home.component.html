@@ -1,5 +1,5 @@
-<div class="row dashboard-home_row">
-  <div class="col-xs-12 col-md-12" fxLayoutAlign="center center">
+<div fxLayout="row" class="dashboard-home_row">
+  <div fxLayoutAlign="center center">
     <app-snippet-table *ngIf="snippetsExist"></app-snippet-table>
     <div id="noSnippetDiv" *ngIf="!snippetsExist">
       <p>You currently have no snippets saved</p>
