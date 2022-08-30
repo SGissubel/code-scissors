@@ -1,0 +1,53 @@
+@import 'src/assets/styles/fonts.scss';
+@import 'src/assets/styles/colors.scss';
+
+.nav-menu {
+    transition: all 0.5s ease-in-out;
+
+    .primary-nav-anchor {
+        color: #000000 !important;
+        cursor: pointer;
+    }
+
+    .navigation-menu-item {
+        text-decoration: none;
+    }
+
+    .primary-nav-anchor:not(.active-menu-item) {
+
+        &:hover {
+            color: $theme-text-inverted;
+            border-bottom: 2px solid $theme-active-primary;
+        }
+    }
+}
+
+.nav-menu-light {
+    color: $theme-text-inverted;
+    transition: all 0.5s ease-in-out;
+    
+    .primary-nav-anchor {
+        position: relative;
+        bottom: 3px;
+        letter-spacing: 1px;
+        font-size: 18px;
+
+        color: $theme-text-inverted !important;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .primary-nav-anchor.active-menu-item {
+        color: $theme-active-primary;
+    }
+    .primary-nav-anchor:not(.active-menu-item) {
+
+        &:hover {
+            color: $theme-text-inverted;
+            border-bottom: 2px solid $theme-active-primary;
+        }
+    }
+
+    .navigation-menu-item {
+        text-decoration: none;
+    }
+}

@@ -1,5 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/theming';
+@import '~@angular/cdk/overlay-prebuilt.css';
+@import 'src/assets/styles/icons.scss';
+@import 'src/assets/styles/fonts.scss';
+@import 'src/assets/styles/colors.scss';
+@import 'src/assets/styles/navigation.scss';
+
 @import '~highlight.js/styles/vs.css';
 
 html, body {
@@ -91,7 +96,9 @@ ngx-monaco-editor {
   }
 }
 
-
+.container-header {
+  padding: 22px;
+}
 
 .mat-input-element {
 	border-bottom: none !important;

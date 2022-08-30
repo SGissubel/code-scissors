@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { isDevMode, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -7,21 +7,17 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import {
   AngularFireAnalyticsModule,
-  APP_NAME,
-  APP_VERSION,
-  DEBUG_MODE as ANALYTICS_DEBUG_MODE,
   ScreenTrackingService,
   UserTrackingService,
-  COLLECTION_ENABLED
 } from '@angular/fire/compat/analytics';
-
-import { AngularFireDatabaseModule, USE_EMULATOR as USE_DATABASE_EMULATOR } from '@angular/fire/compat/database';
-import { AngularFirestoreModule, USE_EMULATOR as USE_FIRESTORE_EMULATOR, SETTINGS as FIRESTORE_SETTINGS } from '@angular/fire/compat/firestore';
-import { AngularFireStorageModule, USE_EMULATOR as USE_STORAGE_EMULATOR } from '@angular/fire/compat/storage';
-import { AngularFireAuthModule, USE_DEVICE_LANGUAGE, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
-import { AngularFireMessagingModule, SERVICE_WORKER, VAPID_KEY } from '@angular/fire/compat/messaging';
-import { AngularFireFunctionsModule, USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/compat/functions';
-import { AngularFireRemoteConfigModule, SETTINGS as REMOTE_CONFIG_SETTINGS, DEFAULTS as REMOTE_CONFIG_DEFAULTS } from '@angular/fire/compat/remote-config';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule, SETTINGS as FIRESTORE_SETTINGS } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthModule } from '@angular/fire/auth';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+import { AngularFireRemoteConfigModule } from '@angular/fire/compat/remote-config';
 import { AngularFirePerformanceModule, PerformanceMonitoringService } from '@angular/fire/compat/performance';
 import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -75,6 +71,7 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
     AngularFireAnalyticsModule,
     AngularFireFunctionsModule,
     AngularFirePerformanceModule,
+    AuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     BrowserModule,
     FormsModule,

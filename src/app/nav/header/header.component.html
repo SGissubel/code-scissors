@@ -1,82 +1,103 @@
-<nav class="navbar navbar-default navCont backgroundImg">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a routerLink="/" class="navbar-brand">
-        <img src="../../assets/images/whitelogo.png">
-      </a>
-    </div>
-    <ng-container class="burger-nav">
-      <button id="burger-dropdown" mat-button [matMenuTriggerFor]="menu">
-        <i class="material-icons">reorder</i>
-      </button>
-      <div class="navbar">
-        <mat-menu class="mat-menu_head" #menu="matMenu">
-          <button class="mat-menu_buttons" mat-menu-item>
-            <a routerLinkActive="active" routerLink="/">HOME</a>
-          </button>
-          <button class="mat-menu_buttons" mat-menu-item>
-            <a routerLinkActive="active">ABOUT</a>
-          </button>
-          <button class="mat-menu_buttons" mat-menu-item>
-            <a routerLinkActive="active">CONTACT</a>
-          </button>
-          <ng-container *ngIf="!isAuth">
-            <button class="mat-menu_buttons" mat-menu-item>
-              <a routerLinkActive="active" routerLink="login">LOGIN</a>
-            </button>
-            <button class="mat-menu_buttons" mat-menu-item>
-              <a routerLinkActive="active" routerLink="login/signup">SIGN UP</a>
-            </button>
-          </ng-container>
-          <ng-container *ngIf="isAuth">
-            <button class="mat-menu_buttons" mat-menu-item>
-              <a routerLinkActive="active" routerLink="dashboard">DASHBOARD</a>
-            </button>
-            <button class="mat-menu_buttons" mat-menu-item>
-              <a routerLinkActive="active" (click)="onLogOut()">LOG OUT</a>
-            </button>
-          </ng-container>  
-        </mat-menu>
+<div class="navbar-default navCont background-img_header">
+  <div class="container-header">
+    <mat-toolbar fxFlex="row">
+      <div class="navbar-header" fxLayoutAlign="start center" fxFlexOffset="20px">
+        <a routerLink="/" class="navbar-brand">
+          <img class="nav-bar_white-logo" src="../../assets/images/whitelogo.png">
+        </a>
       </div>
-    </ng-container>
-    
-    <div id="navleft" class="navbar">
-      <ul class="nav navbar-nav navbar-left">
-        <li><a routerLink="/">
-            HOME
-        </a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-left">
-        <li><a>
+      <div fxFlex></div>
+      <div class="nav-menu-light" fxLayoutAlign="end center"  fxLayoutGap="20px">
+        <ng-container class="burger-nav">
+          <button id="burger-dropdown" mat-button [matMenuTriggerFor]="menu">
+            <span class="material-icons">reorder</span>
+          </button>
+          <div class="navbar">
+            <mat-menu class="mat-menu_head" #menu="matMenu">
+              <button class="mat-menu_buttons" mat-menu-item>
+                <a routerLinkActive="active" routerLink="/">HOME</a>
+              </button>
+              <button class="mat-menu_buttons" mat-menu-item>
+                <a routerLinkActive="active">ABOUT</a>
+              </button>
+              <button class="mat-menu_buttons" mat-menu-item>
+                <a routerLinkActive="active">CONTACT</a>
+              </button>
+              <ng-container *ngIf="!isAuth">
+                <button class="mat-menu_buttons" mat-menu-item>
+                  <a routerLinkActive="active" routerLink="login">LOGIN</a>
+                </button>
+                <button class="mat-menu_buttons" mat-menu-item>
+                  <a routerLinkActive="active" routerLink="login/signup">SIGN UP</a>
+                </button>
+              </ng-container>
+              <ng-container *ngIf="isAuth">
+                <button class="mat-menu_buttons" mat-menu-item>
+                  <a routerLinkActive="active" routerLink="dashboard">DASHBOARD</a>
+                </button>
+                <button class="mat-menu_buttons" mat-menu-item>
+                  <a routerLinkActive="active" (click)="onLogOut()">LOG OUT</a>
+                </button>
+              </ng-container>  
+            </mat-menu>
+          </div>
+        </ng-container>
+        <a
+          class="primary-nav-anchor navigation-menu-item nav-bar-text_white"
+          [routerLinkActive]="['active-menu-item']"
+          fxLayoutAlign="center"
+          routerLink="/"
+        >
+          HOME
+        </a>
+        <a
+          class="primary-nav-anchor navigation-menu-item nav-bar-text_white"
+          fxLayoutAlign="center"
+          routerLink="/"
+        >
           ABOUT
-        </a></li>
-        <li><a>
+        </a>
+        <a
+          class="primary-nav-anchor navigation-menu-item nav-bar-text_white"
+          fxLayoutAlign="center"
+          routerLink="/"
+        >
           CONTACT
-        </a></li>
-      </ul>
-      <ng-container *ngIf="!isAuth">
-	      <ul class="nav navbar-nav navbar-left">
-	        <li id="loginLink">
-            <i class="material-icons">lock_open</i>
-            <a routerLink="login">
-              LOGIN
-            </a>
-          </li>
-	        <li><a routerLink="login/signup">
+        </a>
+        
+        <a
+          class="primary-nav-anchor navigation-menu-item nav-bar-text_white"
+          fxLayoutAlign="center"
+          routerLink="login"
+        >
+          LOGIN
+        </a>
+        <ng-container *ngIf="!isAuth; else authorized">
+          <a
+            class="primary-nav-anchor navigation-menu-item nav-bar-text_white"
+            fxLayoutAlign="center"
+            routerLink="login/signup"
+          >
             SIGN UP
-          </a></li>
-	      </ul>
-      </ng-container>
-      <ng-container *ngIf="isAuth">
-        <ul class="nav navbar-nav navbar-left logout">
-          <li><a routerLink="dashboard">
+          </a>
+        </ng-container>
+        <ng-template #authorized>
+          <a
+            class="primary-nav-anchor navigation-menu-item nav-bar-text_white"
+            fxLayoutAlign="center"
+            routerLink="dashboard"
+          >
             DASHBOARD
-          </a></li>
-	        <li><a (click)="onLogOut()">
+          </a>
+          <a
+            class="primary-nav-anchor navigation-menu-item nav-bar-text_white"
+            fxLayoutAlign="center"
+            (click)="onLogOut()"
+          >
             LOG OUT
-          </a></li>
-	      </ul>
-      </ng-container>
-    </div>
+          </a>
+        </ng-template>
+      </div>
+    </mat-toolbar>
   </div>
-</nav>
+</div>
