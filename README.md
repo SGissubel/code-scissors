@@ -4,7 +4,7 @@
 
 ## About
 
-Code Scissors is a User-centered interface for developers. It was developed in Angular 5, using Angular Material, AngularFire, ScSS, Microft's Monaco Code-Editor, MDBootstrap, and Bootstrap.  As a developer, I know how often you spend hours looking for a piece of code to solve all your issues. Then, after you finally figure it out, you probably will forget the solution minutes later only to run into a similar issue not long after. Now you can store also those perfect nuggets all in one spot!
+Code Scissors is a User-centered interface for developers. It was developed in Angular 5, using Angular Material, AngularFire, ScSS, as well as Microft's Monaco Code-Editor.  As a developer, I know how often you spend hours looking for a piece of code to solve all your issues. Then, after you finally figure it out, you probably will forget the solution minutes later only to run into a similar issue not long after. Now you can store also those perfect nuggets all in one spot!
 
 
 ## Organizing Your Code
