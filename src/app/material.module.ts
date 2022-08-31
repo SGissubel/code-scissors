@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CdkTableModule } from '@angular/cdk/table';
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
+    CommonModule,
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,

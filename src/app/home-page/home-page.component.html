@@ -1,21 +1,25 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="card card-image">
-      <div style="margin: auto">
-
-        <div class="page-head_title" fxLayout="row" fxLayoutAlign="center center" style="margin-bottom: 1em;">
-          <h1>STORE AND SHARE YOUR CODE</h1>
-        </div>
-        <div id="description" fxLayout="row" fxLayoutAlign="center center">
-          <h4>A MODERN DASHBOARD DESIGNED FOR STORING, EDITING, AND SHARING ALL OF YOUR CODE SNIPPETS.</h4>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="center center">
-          <a type="button" routerLink="login" mat-raised-button style="letter-spacing: 3px">GET STARTED</a>
-        </div>
-
-      </div>
+<div class="card card-image" fxLayout="row" fxLayoutAlign="center center">
+  <div fxLayout="column">
+    <div class="home-page-card_title-container" fxLayoutAlign="center center" style="margin-bottom: 1em;">
+      <h1 class="home-page-card_title">STORE AND SHARE YOUR CODE</h1>
+    </div>
+    <div class="home-page-description_container" fxLayout="row" fxLayoutAlign="center center">
+      <h4 class="home-page-description_h4" fxLayoutAlign="center center">
+        A MODERN DASHBOARD DESIGNED FOR STORING, EDITING, AND SHARING ALL OF YOUR CODE SNIPPETS.
+      </h4>
+    </div>
+    <div fxLayoutAlign="center center">
+      <button
+        class="get-started_button"
+        color="primary"
+        mat-raised-button
+        routerLink="login/signup"
+      >
+        GET STARTED
+    </button>
     </div>
   </div>
 </div>
+
 <app-body></app-body>
 

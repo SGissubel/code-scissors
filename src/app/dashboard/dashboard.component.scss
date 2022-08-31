@@ -1,20 +1,20 @@
 #dashboardContainer {
-  position: relative;
-  top: -250px;
+	position: relative;
+	top: -250px;
 }
 
 .head {
-  margin: 0;
-  background: transparent;
-  color: white;
+	margin: 0;
+	background: transparent;
+	color: white;
 }
 
-.headCont {
-  padding: 1em 1em;
+.dashboard-head_container {
+	margin-top: 5em;
 }
 
-.bodyCont {
-  min-height: 500px;
+.dashboard-body_container {
+	min-height: 500px;
 }
 
 @media (max-width: 780px) and (min-width: 501px){
@@ -29,7 +29,7 @@
 	}
 	.dashboard-head_title {
 		text-align: center;
-		h1 {
+		.dashboard-head_h1 {
 			font-size: 31px;
 		}
 	}
@@ -37,6 +37,6 @@
 
 @media (max-width: 446px) {
 	#dashboardContainer {
-    top: -124px;
+    	top: -124px;
 	}
 }

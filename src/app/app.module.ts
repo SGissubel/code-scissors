@@ -1,13 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-// import { MonacoEditorModule } from 'ngx-monaco-editor';
-// import { MDBBootstrapModule } from 'angular-bootstrap-md';
-// import { AngularFireModule } from 'angularfire2';
-// import { AngularFirestoreModule } from 'angularfire2/firestore';
-// import { AngularFireStorageModule } from 'angularfire2/storage';
-// import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { AngularFireModule } from '@angular/fire/compat';
+
+import {
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+  UserTrackingService,
+} from '@angular/fire/compat/analytics';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule, SETTINGS as FIRESTORE_SETTINGS } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AuthModule } from '@angular/fire/auth';
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+import { AngularFireRemoteConfigModule } from '@angular/fire/compat/remote-config';
+import { AngularFirePerformanceModule, PerformanceMonitoringService } from '@angular/fire/compat/performance';
+import { AngularFireAuthGuardModule } from '@angular/fire/compat/auth-guard';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+
 import { environment } from '../environments/environment';
 
 // components
@@ -23,49 +37,63 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material.module';
 
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
-import { AuthService } from './login/auth.service';
-import { UIService } from './shared/ui.service';
-import { FooterService } from './home-page/footer.service';
 import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.component';
+import { CommonModule } from '@angular/common';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HeaderComponent,
     DropdownDirective,
     FooterComponent,
     HomePageComponent,
     BodyComponent,
     LoginSignupComponent,
+    LoginComponent,
     SignupComponent,
     PageNotFoundComponent,
     FooterHomeComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
+    AngularFireAuthModule,
+    AngularFireAuthGuardModule,
+    AngularFireRemoteConfigModule,
+    AngularFireMessagingModule,
+    AngularFireAnalyticsModule,
+    AngularFireFunctionsModule,
+    AngularFirePerformanceModule,
+    MonacoEditorModule.forRoot(),
+    AuthModule,
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     BrowserModule,
-    // MonacoEditorModule.forRoot(),
-    // AngularFireModule.initializeApp(environment.firebase, 'code-scissors'),
-    // AngularFirestoreModule,
-    // AngularFireStorageModule,
-    // AngularFireAuthModule,
     FormsModule,
-    // FlexLayoutModule,
+    CommonModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
     DashboardModule,
     MaterialModule,
-    // MDBBootstrapModule.forRoot(),
     BrowserAnimationsModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [AuthService, UIService, FooterService],
+  providers: [
+    UserTrackingService,
+    ScreenTrackingService,
+    PerformanceMonitoringService,
+    { provide: FIRESTORE_SETTINGS, useValue: { ignoreUndefinedProperties: true } },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

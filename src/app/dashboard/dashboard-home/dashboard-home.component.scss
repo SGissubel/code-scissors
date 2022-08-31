@@ -1,18 +1,29 @@
+@import 'src/assets/styles/colors.scss';
+
 .dashboard-home_row {
   margin-top: 10em;
 }
 
+.dashboard-home_snippettable-container {
+    background-color: $theme-page-content-background;
+    padding: 1em 1em;
+	  border: 1px solid #dcdcdc;
+}
+
 #noSnippetDiv {
-  text-align: center; 
+  text-align: center;
   color: white;
+
   a {
     transition:all 0.3s ease;
     color: black;
     letter-spacing: 3px;
   }
+
   .fade {
     opacity:0.75;
   }
+
   .fade:hover {
     opacity:1;
   }

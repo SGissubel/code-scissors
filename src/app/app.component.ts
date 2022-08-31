@@ -1,10 +1,7 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
-// import { AngularFirestore } from 'angularfire2/firestore';
-
 import { FooterService } from './home-page/footer.service';
-
 import { AuthService } from './login/auth.service';
 
 @Component({
@@ -13,32 +10,34 @@ import { AuthService } from './login/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewChecked {
-  isAuth = false;
-  notOnHomePage = false;
+  isAuth: boolean = false;
+  notOnHomePage: boolean = false;
 
-  constructor(private authService: AuthService,
-              private footServ: FooterService,
-              private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private footServ: FooterService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.authService.initAuthListener();
-    this.footServ.isNotOnHomePage
-      .subscribe(
-        (bool) => {
-          this.notOnHomePage = bool;
-          console.clear();
+
+    this.footServ.getIsNotOnHomePage()
+      .subscribe({
+        next: (isNotOnHomePage) => {
+          this.notOnHomePage = isNotOnHomePage;
+          console.clear();  
         },
-        err => {
-          // console.log(err)
-        }
-      );
+        error: (err) => console.log(err)
+      });
 
     this.authService.isLoggedIn
-      .subscribe(
-      authStatus => {
-        this.isAuth = authStatus;
-        }
-      );
+      .subscribe({
+        next: (authStatus: boolean) => {
+          this.isAuth = authStatus;
+        },
+        error: (err) => console.log(err)
+      });
   }
 
   ngAfterViewChecked() {

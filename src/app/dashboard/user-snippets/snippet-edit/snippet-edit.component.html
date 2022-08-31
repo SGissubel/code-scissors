@@ -1,5 +1,5 @@
 <div id="editor-div">
-  <div class="row">
+  <div fxLayout="row">
     <div class="col-xs-6 col-md-6">
       <section id="formSection">
         <form
@@ -79,7 +79,7 @@
               </mat-hint>
             </mat-checkbox>
             </span>
-           <div class="row button-row">
+           <div fxLayout="row" class="button-row">
             <div class="col-xs-12">
               <button type="submit" mat-raised-button color="primary" [disabled]="codeTags.invalid" >SAVE SNIPPET</button>
             </div>
@@ -106,10 +106,10 @@
 
 
   <span class="editor-words"> Enter Your Code Snippet Below:*</span>
-  <!-- <ngx-monaco-editor
+  <ngx-monaco-editor
     id="monaco-editor" 
   	[options]="editorOptions" 
   	[(ngModel)]="code"
-  ></ngx-monaco-editor> -->
+  ></ngx-monaco-editor>
   	
 </div>

@@ -3,8 +3,8 @@
   position: relative;
   top: -113px;
   padding-bottom: 305px;
-  background: transparent;
-  box-shadow: none;
+  // background: transparent;
+  // box-shadow: none;
 }
 
 .headTitle {
@@ -36,16 +36,18 @@ mat-form-field {
   width: 80%;
 }
 
-.mat-form-field-label {
-  color: black;
-}
+// .mat-form-field-label {
+//   color: black;
+// }
 
 .loginSubmit {
   width: 100%;
+
   div {
     width: 100%;
     text-align: center;
     padding-top: 3em;
+
     button {
       transition:all 0.3s ease;
       font-size: 17px;

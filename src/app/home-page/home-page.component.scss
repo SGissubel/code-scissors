@@ -1,10 +1,4 @@
-// .backgroundImg {
-//   background-image: url("../../assets/images/background-new.jpg");
-//   background-size: 100% 100%;
-//   height: 803px;
-//   position: relative;
-//   top: -78px;
-// }
+@import 'src/assets/styles/colors.scss';
 
 .text-center {
   justify-content: center;
@@ -16,21 +10,19 @@
   box-shadow: none;
 }
 
-#description {
-  margin: auto;
-  text-align: center;
+.home-page-card_title {
+  font-size: 45px;
+  color: $theme-text-inverted;
+}
+
+.home-page-description_container {
   width: 61%;
-  margin-bottom: 1em
-}
-
-h1 {
-  color: white;
-  font-weight: 800;
-  letter-spacing: 4px;
-}
-
-.page-head_title h1 {
+  margin: 0 auto;
   text-align: center;
+}
+
+.home-page-description_h4 {
+  font-size: 30px;
 }
 
 @media (min-width: 768px) and (max-width: 890px) {

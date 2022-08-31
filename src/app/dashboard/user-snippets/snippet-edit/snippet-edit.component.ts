@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy, AfterViewChecked } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 import { SnippetsService } from '../../services/snippets.service';
 import { LanguagesService } from './languages.service';

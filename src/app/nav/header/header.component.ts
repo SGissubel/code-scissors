@@ -8,8 +8,8 @@ import { AuthService } from '../../login/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  isOpen = false;
-  isAuth = false;
+  isOpen: boolean = false;
+  isAuth: boolean = false;
 
   constructor(private authService: AuthService) { }
 
