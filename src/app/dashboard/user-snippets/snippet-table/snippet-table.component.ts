@@ -28,7 +28,13 @@ export class SnippetTableComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.snippetSubscription = this.snipService.snippetsAdded
+    this.subToSnippetsAdded();
+    this.snipService.fetchCreatedSnippets();
+    this.snipService.fetchAvailableSnippets();
+  }
+
+  subToSnippetsExist() {
+    this.snippetSubscription = this.snipService.getSnippetsAdded()
       .subscribe(
         (snippets: any) => {
           const [allSnippets] = snippets;
@@ -38,8 +44,19 @@ export class SnippetTableComponent implements OnInit, OnDestroy {
           this.dataSource.data = this.snippetsAll;
         }
       );
-    this.snipService.fetchCreatedSnippets();
-    this.snipService.fetchAvailableSnippets();
+  }
+
+  subToSnippetsAdded() {
+    this.snippetSubscription = this.snipService.getSnippetsAdded()
+      .subscribe(
+        (snippets: any) => {
+          const [allSnippets] = snippets;
+
+          this.snippetsAll = [];
+          this.snippetsAll = allSnippets;
+          this.dataSource.data = this.snippetsAll;
+        }
+      );
   }
 
   applyFilter(filterValue: any) {

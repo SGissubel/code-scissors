@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { PopUpMessageService } from 'src/app/shared/pop-up-message.service';
 
 import { FooterService } from '../../home-page/footer.service';
@@ -14,24 +14,35 @@ import { AuthService } from '../auth.service';
   ]
 })
 export class SignupComponent implements OnInit {
+  signInForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private footerService: FooterService,
-    private popUpMessageService: PopUpMessageService
+    private popUpMessageService: PopUpMessageService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
     this.footerService.homePageCheck();
+    this.initializeForm();
+  }
+  
+  initializeForm() {
+    this.signInForm = this.fb.group({
+      email: null,
+      password: null
+    });
   }
 
-  onSignup(signUpForm: NgForm) {
+  signinSubmit() {
+    const signUpForm = this.signInForm.value;
     const emailPass = {
-      email: signUpForm.value.email,
-      password: signUpForm.value.password
+      email: signUpForm.email,
+      password: signUpForm.password
     };
     this.authService.registerUser(emailPass)
-      .then(_ => {})
+      .then()
       .catch(error => {
         this.popUpMessageService.showSnackbar(error.message, null, 3000);
       });

@@ -11,9 +11,9 @@ import { UserSnippetComponent } from './user-snippets/user-snippet.component';
 import { SnippetEditComponent } from './user-snippets/snippet-edit/snippet-edit.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { SnippetTableComponent } from './user-snippets/snippet-table/snippet-table.component';
-// import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor';
+import { MonacoEditorModule, NgxMonacoEditorConfig } from 'ngx-monaco-editor';
 import { MaterialModule } from '../material.module';
-// import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SnippetsService } from './services/snippets.service';
 import { LanguagesService } from './user-snippets/snippet-edit/languages.service';
@@ -26,8 +26,8 @@ import { TruncatePipe } from '../shared/truncate';
     DashboardRoutingModule,
     MaterialModule,
     AppRoutingModule,
-    // FlexLayoutModule,
-    // MonacoEditorModule,
+    FlexLayoutModule,
+    MonacoEditorModule,
     FormsModule,
     HttpClientModule
   ],

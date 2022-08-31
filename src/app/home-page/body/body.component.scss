@@ -23,11 +23,11 @@
   min-height: 140px;
 }
 
-#leftIcon {
-  .icon-parent-div {
-    margin-left: 30%;
-  }
-}
+// #leftIcon {
+//   .icon-parent-div {
+//     margin-left: 30%;
+//   }
+// }
 
 .icon-div-center {
   position: relative;
@@ -44,11 +44,11 @@
   bottom: 4px;
 }
 
-#rightIcon {
-  .icon-parent-div {
-    margin-right: 30%;
-  }
-}
+// #rightIcon {
+//   .icon-parent-div {
+//     margin-right: 30%;
+//   }
+// }
 
 @media (max-width: 768px) {
   .icon-parent-div {
@@ -58,11 +58,11 @@
 
 @media (min-width: 768px) and (max-width: 890px) {
 
-  #leftIcon {
-    .icon-parent-div {
-      margin-left: 13px;
-    }
-  }
+  // #leftIcon {
+  //   .icon-parent-div {
+  //     margin-left: 13px;
+  //   }
+  // }
 
   .icon-parent-div {
     width: 216px;
@@ -76,20 +76,20 @@
     margin: 0 auto;
   }
 
-  #leftIcon {
-    .icon-parent-div {
-      margin-left: 5%;
-    }
-  }
+  // #leftIcon {
+  //   .icon-parent-div {
+  //     margin-left: 5%;
+  //   }
+  // }
 }
 
-@media (min-width: 995px) and (max-width: 1180px) {
-  #leftIcon {
-    .icon-parent-div {
-      margin-left: 18%;
-    }
-  }
-}
+// @media (min-width: 995px) and (max-width: 1180px) {
+//   #leftIcon {
+//     .icon-parent-div {
+//       margin-left: 18%;
+//     }
+//   }
+// }
 
 
 

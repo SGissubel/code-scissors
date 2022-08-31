@@ -1,81 +1,84 @@
 
-<div class="container mat-elevation-z8" fxLayout="column" fxLayoutGap="2em">
-<button class="addNewSnipBtn" mat-raised-button routerLink="new">ADD NEW</button>
-  <div class="header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target)" placeholder="Filter">
-    </mat-form-field>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div class="" fxLayout="column" fxLayoutGap="2em">
+  
+    <button class="addNewSnipBtn" mat-raised-button routerLink="new">ADD NEW</button>
+  
+    <div class="header">
+      <mat-form-field>
+        <input  matInput (keyup)="applyFilter($event.target)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  
+    <mat-table class="material-table_toptier" #table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name of Snippet </mat-header-cell>
+        <mat-cell *matCellDef="let snippet"> {{ snippet.name }} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="language">
+        <mat-header-cell *matHeaderCellDef> Language </mat-header-cell>
+        <mat-cell *matCellDef="let snippet"> {{ snippet.language }} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="other_tags">
+        <mat-header-cell *matHeaderCellDef> Tags </mat-header-cell>
+        <mat-cell *matCellDef="let snippet">
+          <ng-container *ngFor="let tag of snippet.other_tags; let i=index">
+            <ng-container *ngIf="i < 2">
+              <span>{{ tag }}</span> <br>
+            </ng-container>
+            <ng-container *ngIf="i === 2">
+              <span>...</span> <br>
+            </ng-container>
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Created Column -->
+      <ng-container matColumnDef="created_at">
+        <mat-header-cell *matHeaderCellDef> Date Created </mat-header-cell>
+        <mat-cell *matCellDef="let snippet"> {{ snippet.created_at | date }} </mat-cell>
+      </ng-container>
+  
+      <!-- Favorite Column -->
+      <ng-container matColumnDef="favorite">
+        <mat-header-cell *matHeaderCellDef> Favorited </mat-header-cell>
+        <mat-cell *matCellDef="let snippet"> 
+          <span *ngIf="!snippet.favorite">
+            <a (click)="addToFavorite(snippet)">Favorite This Snippet</a>
+          </span>
+          <span *ngIf="snippet.favorite">
+            <i class="material-icons">thumb_up</i>
+            <span>
+              <a style="color: red" (click)="addToFavorite(snippet)">Remove From Favorites</a>
+            </span>   
+          </span>
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Private Column -->
+      <ng-container matColumnDef="private">
+        <mat-header-cell *matHeaderCellDef> Viewing </mat-header-cell>
+        <mat-cell *matCellDef="let snippet"> {{ snippet.isprivate ? 'Set To Private' : 'Set to Public' }} </mat-cell>
+      </ng-container>
+  
+      <!-- View/Edit Column -->
+      <ng-container matColumnDef="view">
+        <mat-header-cell *matHeaderCellDef> View/Edit </mat-header-cell>
+        <mat-cell *matCellDef="let snippet"> 
+          <button mat-raised-button (click)="editSnippet(snippet)">View/Edit Snippet</button> 
+          <button class="deleteBtn" style="margin-top: 10px" mat-raised-button (click)="removeSnippet(snippet)">Delete Snippet</button> 
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      
+    </mat-table>
   </div>
-
-  <mat-table #table [dataSource]="dataSource">
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name of Snippet </mat-header-cell>
-      <mat-cell *matCellDef="let snippet"> {{ snippet.name }} </mat-cell>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="language">
-      <mat-header-cell *matHeaderCellDef> Language </mat-header-cell>
-      <mat-cell *matCellDef="let snippet"> {{ snippet.language }} </mat-cell>
-    </ng-container>
-
-    <!-- Weight Column -->
-    <ng-container matColumnDef="other_tags">
-      <mat-header-cell *matHeaderCellDef> Tags </mat-header-cell>
-      <mat-cell *matCellDef="let snippet">
-        <ng-container *ngFor="let tag of snippet.other_tags; let i=index">
-          <ng-container *ngIf="i < 2">
-            <span>{{ tag }}</span> <br>
-          </ng-container>
-          <ng-container *ngIf="i === 2">
-            <span>...</span> <br>
-          </ng-container>
-        </ng-container>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Created Column -->
-    <ng-container matColumnDef="created_at">
-      <mat-header-cell *matHeaderCellDef> Date Created </mat-header-cell>
-      <mat-cell *matCellDef="let snippet"> {{ snippet.created_at | date }} </mat-cell>
-    </ng-container>
-
-    <!-- Favorite Column -->
-    <ng-container matColumnDef="favorite">
-      <mat-header-cell *matHeaderCellDef> Favorited </mat-header-cell>
-      <mat-cell *matCellDef="let snippet"> 
-        <span *ngIf="!snippet.favorite">
-          <a (click)="addToFavorite(snippet)">Favorite This Snippet</a>
-        </span>
-        <span *ngIf="snippet.favorite">
-          <i class="material-icons">thumb_up</i>
-          <span>
-            <a style="color: red" (click)="addToFavorite(snippet)">Remove From Favorites</a>
-          </span>   
-        </span>
-      </mat-cell>
-    </ng-container>
-
-    <!-- Private Column -->
-    <ng-container matColumnDef="private">
-      <mat-header-cell *matHeaderCellDef> Viewing </mat-header-cell>
-      <mat-cell *matCellDef="let snippet"> {{ snippet.isprivate ? 'Set To Private' : 'Set to Public' }} </mat-cell>
-    </ng-container>
-
-    <!-- View/Edit Column -->
-    <ng-container matColumnDef="view">
-      <mat-header-cell *matHeaderCellDef> View/Edit </mat-header-cell>
-      <mat-cell *matCellDef="let snippet"> 
-        <button mat-raised-button (click)="editSnippet(snippet)">View/Edit Snippet</button> 
-        <button class="deleteBtn" style="margin-top: 10px" mat-raised-button (click)="removeSnippet(snippet)">Delete Snippet</button> 
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    
-  </mat-table>
-</div>
-
+</div>  

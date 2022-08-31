@@ -1,9 +1,12 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink";
 @import '~@angular/material/theming';
 @import '~@angular/cdk/overlay-prebuilt.css';
 @import 'src/assets/styles/icons.scss';
 @import 'src/assets/styles/fonts.scss';
 @import 'src/assets/styles/colors.scss';
 @import 'src/assets/styles/navigation.scss';
+@import 'src/assets/styles/formatting.scss';
+@import 'src/assets/styles/buttons.scss';
 
 @import '~highlight.js/styles/vs.css';
 
@@ -24,7 +27,7 @@ span, p, button, a {
 
 h1, h2, h3, h4, h5 {
   font-weight: 900 !important;
-  letter-spacing: 3px !important;
+  letter-spacing: 2px !important;
 }
 
 #page-container {
@@ -51,6 +54,10 @@ ngx-monaco-editor {
 	width: 90% !important;
 }
 
+.material-table_toptier {
+  min-height: 200px;
+}
+
 .monaco-editor {
 	width: 100%;
 }
@@ -66,10 +73,10 @@ ngx-monaco-editor {
 
 
 // inputs
-.mat-input-infix, 
-.mat-form-field-infix {
-  border-bottom: none;
-}
+// .mat-input-infix, 
+// .mat-form-field-infix {
+//   border-bottom: none;
+// }
 
 .mat-table {
   max-height: 77% !important;
@@ -100,10 +107,29 @@ ngx-monaco-editor {
   padding: 22px;
 }
 
-.mat-input-element {
-	border-bottom: none !important;
-	box-shadow: none !important;
+// .mat-input-element {
+// 	border-bottom: none !important;
+// 	box-shadow: none !important;
+// }
+
+
+
+
+// HOME PAGE
+.home-page-description_h4 {
+  margin-bottom: 10px !important;
+  margin-top: 25px;
 }
+
+.home-page-card_title-container,
+.home-page-card_title {
+  margin-bottom: 0 !important;
+}
+
+
+
+
+// MEDIA QUERIES
 
 @media (max-width: 500px) {
   #page-container {

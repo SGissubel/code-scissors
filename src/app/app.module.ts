@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -43,18 +43,20 @@ import { MaterialModule } from './material.module';
 // directives / services / pipes
 import { DropdownDirective } from './shared/dropdown.directive';
 import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.component';
+import { CommonModule } from '@angular/common';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     HeaderComponent,
     DropdownDirective,
     FooterComponent,
     HomePageComponent,
     BodyComponent,
     LoginSignupComponent,
+    LoginComponent,
     SignupComponent,
     PageNotFoundComponent,
     FooterHomeComponent,
@@ -71,10 +73,13 @@ import { FooterHomeComponent } from './nav/footer/footer-home/footer-home.compon
     AngularFireAnalyticsModule,
     AngularFireFunctionsModule,
     AngularFirePerformanceModule,
+    MonacoEditorModule.forRoot(),
     AuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     BrowserModule,
     FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,

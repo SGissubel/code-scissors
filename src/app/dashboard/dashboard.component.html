@@ -1,18 +1,12 @@
 <div id="dashboardContainer">
   <div class="head">
-    <div class="headCont">
-      <div>
-        <div class="dashboard-head_title" fxLayoutAlign="center center">
-          <h1>YOUR DASHBOARD</h1>
-        </div>
+    <div class="dashboard-head_container">
+      <div class="dashboard-head_title" fxLayoutAlign="center center">
+        <h1 class="dashboard-head_h1">YOUR DASHBOARD</h1>
       </div>
     </div>
   </div>
-  <div class="bodyCont">
-    <div class="">
-      <div class="col-md-12">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+  <div class="dashboard-body_container">
+    <router-outlet></router-outlet>
   </div>
 </div>

@@ -14,9 +14,11 @@ export class DashboardHomeComponent implements OnInit, OnDestroy {
   constructor(private snipService: SnippetsService) { }
 
   ngOnInit() {
-    this.snippetSubscription = this.snipService.snippetsExist
+    debugger
+    this.snippetSubscription = this.snipService.getSnippetsExist()
       .subscribe(
         (exists: boolean) => {
+          debugger
           this.snippetsExist = exists;
         }
       );
