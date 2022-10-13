@@ -11,7 +11,7 @@
 @import '~highlight.js/styles/vs.css';
 
 html, body {
-  font-family: "Montserrat";
+  font-family: "serif";
   height: 100%;
   width: 100%;
   margin: 0px;
@@ -20,13 +20,13 @@ html, body {
 }
 
 span, p, button, a {
-  font-family: "Montserrat";
-  font-weight: 900;
+  font-family: "serif";
+  font-weight: 600;
   letter-spacing: 2px;
 }
 
 h1, h2, h3, h4, h5 {
-  font-weight: 900 !important;
+  font-weight: 600 !important;
   letter-spacing: 2px !important;
 }
 
@@ -39,13 +39,34 @@ h1, h2, h3, h4, h5 {
   background: transparent;
 }
 
+.ul_list-style-type-none {
+  list-style-type: none;
+  padding-left: 0;
+
+  .anchor_decoration-none {
+    text-decoration: none;
+    font-family: serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+}
+
+.footer_title {
+  font-size: 21px;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+}
+
 footer.page-footer {
-  padding-top: 3em;
-  margin-top: 0;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
+    background-color: #3e4551!important;
+    margin-top: 10em;
+    color: #fff;
+    // padding-top: 3em;
+    // position: relative;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
 }
 
 ngx-monaco-editor {

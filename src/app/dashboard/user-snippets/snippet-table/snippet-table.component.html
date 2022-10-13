@@ -6,7 +6,7 @@
   
     <div class="header">
       <mat-form-field>
-        <input  matInput (keyup)="applyFilter($event.target)" placeholder="Filter">
+        <input [disabled]="!snippetsExist" matInput (keyup)="applyFilter($event.target)" placeholder="Filter">
       </mat-form-field>
     </div>
   

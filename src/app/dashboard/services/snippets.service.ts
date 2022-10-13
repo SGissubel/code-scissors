@@ -7,7 +7,9 @@ import { ISnippet } from '../models/snippets.model';
 import { AuthService } from '../../login/auth.service';
 import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SnippetsService {
   snippetsAdded = new BehaviorSubject<any[]>(null);
   snippetsExist = new BehaviorSubject<boolean>(null);

@@ -19,6 +19,7 @@ export class SnippetTableComponent implements OnInit, OnDestroy {
   snippetsAll: ISnippet[] = [];
   dataSource = new MatTableDataSource<ISnippet>();
   snippetSubscription: Subscription;
+  snippetsExist: boolean;
 
   constructor(
     private snipService: SnippetsService,
@@ -34,14 +35,10 @@ export class SnippetTableComponent implements OnInit, OnDestroy {
   }
 
   subToSnippetsExist() {
-    this.snippetSubscription = this.snipService.getSnippetsAdded()
+    this.snippetSubscription = this.snipService.getSnippetsExist()
       .subscribe(
-        (snippets: any) => {
-          const [allSnippets] = snippets;
-
-          this.snippetsAll = [];
-          this.snippetsAll = allSnippets;
-          this.dataSource.data = this.snippetsAll;
+        (exists: boolean) => {
+          this.snippetsExist = exists;
         }
       );
   }
